@@ -11,10 +11,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 PROD = config("PROD", cast=bool)
 if PROD:
-    print('YEEEEEEEEES')
     from .prod import *
 else:
-    print('NOOOOOOOO')
     from .dev import *
 
 # SECURITY WARNING: keep the secret key used in production secret!
