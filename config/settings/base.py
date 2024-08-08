@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-if config("PROD") == 'True':
+if config("PROD", cast=bool):
     from .prod import *
 else:
     from .dev import *
@@ -19,7 +19,7 @@ else:
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DEBUG", True)
+DEBUG = config("DEBUG")
 
 
 # Application definition
