@@ -2,7 +2,7 @@
 back_media
 tests
 
-src/apps/*/migrations
+src/apps/*/migrations/*
 !src/apps/*/migrations/__init__.py
 
 back_static/*
