@@ -129,9 +129,6 @@ LOCALE_PATHS = (
 )
 
 STATIC_URL = '/back_static/'
-# STATICFILES_DIRS = [
-#     BASE_DIR / "back_static",
-# ]
 STATIC_ROOT = BASE_DIR / 'back_static'
 
 MEDIA_URL = '/back_media/'
@@ -157,9 +154,9 @@ MODELTRANSLATION_CUSTOM_FIELDS = ('CKEditor5Field', )
 # CKEDITOR_5_FILE_STORAGE = CKEDITOR_5_FILE_STORAGE
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'ОРЕХИ API',
+    'TITLE': 'SOLAAR`s API',
     'DESCRIPTION': 'Тут продаются лучше орехи во всем диком западе',
-    'VERSION': '1.0.0',
+    'VERSION': '0.0.1',
     'SERVE_INCLUDE_SCHEMA': False,
     # OTHER SETTINGS
     'SWAGGER_UI_SETTINGS': {

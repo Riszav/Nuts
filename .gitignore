@@ -7,6 +7,8 @@ src/apps/*/migrations/*
 
 back_static/*
 !back_static/translate/*
+!back_static/logo0.png
+!back_static/logo1.png
 
 test.db.sqlite3
 __pycache__/
