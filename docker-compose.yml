@@ -11,9 +11,9 @@
       restart: always
       depends_on:
         - pgdb
-      command: sh -c "python manage.py makemigrations && python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8008"
+      command: sh -c "python manage.py makemigrations && python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8000"
       ports:
-        - "8008:8008"
+        - "8000:8000"
 
     pgdb:
       image: postgres:latest
@@ -24,7 +24,7 @@
         POSTGRES_USER: ${SQL_USER}
         POSTGRES_PASSWORD: ${SQL_PASSWORD}
       ports:
-        - "5438:5432"
+        - "5432:5432"
       volumes:
         - nuts_db:/var/lib/postgresql/data/
 
@@ -32,7 +32,7 @@
       container_name: nuts_nginx
       image: nginx
       ports:
-        - 88:88
+        - 80:80
       volumes:
         - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
         - nuts_static:/usr/src/app/back_static

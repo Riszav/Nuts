@@ -14,4 +14,4 @@ DATABASES = {
     }
 }
 
-CSRF_TRUSTED_ORIGINS = ["http://"+config('IP_ADDRESS'), "http://"+config('IP_ADDRESS')+":88"]
+CSRF_TRUSTED_ORIGINS = ["http://"+config('IP_ADDRESS'), "http://"+config('IP_ADDRESS')+":80"]
