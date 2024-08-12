@@ -11,7 +11,7 @@ JAZZMIN_SETTINGS = {
     "site_brand": "SOLAAR",
 
     # Logo to use for your site, must be present in back_static files, used for brand on top left
-    "site_logo": "jazzmin/img/logo0.png",
+    "site_logo": "jazzmin/img/logo.png",
 
     # Logo to use for your site, must be present in back_static files, used for login form logo (defaults to site_logo)
     # "login_logo": "jazzmin/img/logo0.png",
