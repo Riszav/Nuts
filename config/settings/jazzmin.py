@@ -11,19 +11,19 @@ JAZZMIN_SETTINGS = {
     "site_brand": "SOLAAR",
 
     # Logo to use for your site, must be present in back_static files, used for brand on top left
-    "site_logo": "logo1.png",
+    "site_logo": "jazzmin/img/logo0.png",
 
     # Logo to use for your site, must be present in back_static files, used for login form logo (defaults to site_logo)
-    "login_logo": "logo0.png",
+    # "login_logo": "jazzmin/img/logo0.png",
 
     # Logo to use for login form in dark themes (defaults to login_logo)
     "login_logo_dark": None,
 
     # CSS classes that are applied to the logo above
-    "site_logo_classes": "img-circle",
+    # "site_logo_classes": "img-circle",
 
     # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
-    "site_icon": "logo0.png",
+    # "site_icon": "jazzmin/img/logo0.png",
 
     # Welcome text on the login screen
     "welcome_sign": "Добро пожаловать в SOLAAR",
