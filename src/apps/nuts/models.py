@@ -17,12 +17,12 @@ class Category(models.Model):
         db_table = 'category'
 
 
-class Catalog(models.Model):
+class Product(models.Model):
     name = models.CharField(_("name"), max_length=100)
     description = models.TextField(_("description"), blank=True)
     hit_of_sales = models.BooleanField(default=False, verbose_name=_("hit of sales"))
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='catalogs', verbose_name=_("category"))
-    image = models.ImageField(_("image"), upload_to='catalog_images')
+    image = models.ImageField(_("image"), upload_to='catalog_images', help_text='Разрешенный формат изображения img, jpg, jpeg, phg.')
 
     fields_to_translate = ['name']
 
@@ -30,9 +30,9 @@ class Catalog(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = _('catalog')
-        verbose_name_plural = _('catalogs')
-        db_table = 'catalog'
+        verbose_name = _('product')
+        verbose_name_plural = _('products')
+        db_table = 'product'
 
     def save(self, *args, **kwargs):
         new_image = compress(self.image)
@@ -41,7 +41,7 @@ class Catalog(models.Model):
 
 
 class Price(models.Model):
-    catalog = models.ForeignKey(Catalog, on_delete=models.CASCADE, related_name='prices', verbose_name=_("catalog"))
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='prices', verbose_name=_("product"))
     volume = models.CharField(max_length=25, verbose_name=_("volume"))
     price = models.DecimalField(max_digits=8, decimal_places=2)
 
@@ -52,7 +52,7 @@ class Price(models.Model):
 
 
 class Recipe(models.Model):
-    catalog = models.ForeignKey(Catalog, on_delete=models.CASCADE, related_name='recipes', verbose_name=_("catalog"))
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='recipes', verbose_name=_("product"))
     description = models.TextField(_("description"), blank=True)
     image = models.ImageField(_("image"), upload_to='recipe_images')
     link = models.URLField(_("link"))

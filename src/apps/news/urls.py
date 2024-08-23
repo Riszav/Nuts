@@ -5,4 +5,5 @@ app_name = 'news'
 
 urlpatterns = [
     path('news/', views.NewsListApiView.as_view()),
+    path('news/<int:pk>/', views.NewsDetailApiView.as_view()),
  ]

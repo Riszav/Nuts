@@ -1,6 +1,6 @@
 from django.contrib import admin
 from mixins.translations_mixins import TranslatorMediaMixin, TranslationTabularInlineMixin, TranslationMixin
-from .models import Category, Catalog, Recipe, Price
+from .models import Category, Product, Recipe, Price
 from modeltranslation.admin import TranslationAdmin
 
 
@@ -8,12 +8,12 @@ from modeltranslation.admin import TranslationAdmin
 class CategoryAdmin(TranslatorMediaMixin):
     list_display = ['id', 'name']
     list_display_links = ['id', 'name']
-
+    search_fields = ("category", "title")
     class Media:
         js = ('translate/autotranslate.js',)
 
 
-class CatalogPriceInline(TranslationTabularInlineMixin):
+class ProductPriceInline(TranslationTabularInlineMixin):
     model = Price
     fields = ['volume', 'price']
     max_num = 3
@@ -23,11 +23,12 @@ class CatalogPriceInline(TranslationTabularInlineMixin):
         js = ('translate/autotranslate.js',)
 
 
-@admin.register(Catalog)
-class CatalogAdmin(TranslatorMediaMixin):
+@admin.register(Product)
+class ProductAdmin(TranslatorMediaMixin):
     list_display = ['id', 'hit_of_sales', 'name', 'category']
     list_display_links = ['id', 'name']
-    inlines = (CatalogPriceInline,)
+    inlines = (ProductPriceInline,)
+    autocomplete_fields = ("category", )
 
     class Media:
         js = ('translate/autotranslate.js',)
@@ -44,8 +45,8 @@ class CatalogAdmin(TranslatorMediaMixin):
 
 @admin.register(Recipe)
 class RecipeAdmin(TranslatorMediaMixin):
-    list_display = ['id', 'catalog']
-    list_display_links = ['id', 'catalog']
+    list_display = ['id', 'product']
+    list_display_links = ['id', 'product']
     
     class Media:
         js = ('translate/autotranslate.js',)

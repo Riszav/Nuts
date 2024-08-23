@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Catalog, Category, Price
+from .models import Product, Category, Price
 
 
 class PriceSerializer(serializers.ModelSerializer):
@@ -8,12 +8,12 @@ class PriceSerializer(serializers.ModelSerializer):
         fields = ['id', 'volume', 'price']
 
 
-class CatalogSerializer(serializers.ModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
     prices = PriceSerializer(many=True, read_only=True)
     # category = CategorySerializer(read_only=True)
 
     class Meta:
-        model = Catalog
+        model = Product
         fields = ['id', 'name', 'image', 'hit_of_sales', 'prices']
 
 
@@ -26,4 +26,4 @@ class CategorySerializer(serializers.ModelSerializer):
 
     def get_catalogs(self, obj):
         catalogs = obj.catalogs.all()[:8]
-        return CatalogSerializer(catalogs, many=True).data
+        return ProductSerializer(catalogs, many=True).data

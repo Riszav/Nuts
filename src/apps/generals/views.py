@@ -3,13 +3,26 @@ from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from .serializers import *
 from .models import FAQ, Contact
+from drf_spectacular.utils import extend_schema, extend_schema_view
 
 
+@extend_schema(tags=["ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ"])
+@extend_schema_view(
+    get=extend_schema(
+        summary='ПОЛУЧЕНИЕ СПИСКА ЧАСТО ЗАДАВАЕМЫХ ВОПРОСОВ'
+    )
+)
 class FAQListAPIView(ListAPIView):
     queryset = FAQ.objects.all()
     serializer_class = FAQSerializer
 
 
+@extend_schema(tags=["КОНТАКТЫ"])
+@extend_schema_view(
+    get=extend_schema(
+        summary='ПОЛУЧЕНИЕ КОНТАКТОВ'
+    )
+)
 class ContactListAPIView(RetrieveAPIView):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
