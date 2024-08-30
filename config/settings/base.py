@@ -2,6 +2,7 @@ from pathlib import Path
 from .jazzmin import JAZZMIN_SETTINGS, JAZZMIN_UI_TWEAKS
 from .ckeditor import customColorPalette, CKEDITOR_5_CONFIGS, CKEDITOR_5_CUSTOM_CSS
 from decouple import config
+from .unfold import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -25,8 +26,15 @@ DEBUG = config("DEBUG", cast=bool)
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
     'modeltranslation',
+    "unfold",  # before django.contrib.admin
+    "unfold.contrib.filters",  # optional, if special filters are needed
+    "unfold.contrib.forms",  # optional, if special form elements are needed
+    "unfold.contrib.inlines",  # optional, if special inlines are needed
+    # "unfold.contrib.import_export",  # optional, if django-import-export package is used
+    # "unfold.contrib.guardian",  # optional, if django-guardian package is used
+    # "unfold.contrib.simple_history",  # optional, if django-simple-history package is used
+    # 'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'corsheaders',
@@ -130,6 +138,9 @@ LOCALE_PATHS = (
 
 STATIC_URL = '/back_static/'
 STATIC_ROOT = BASE_DIR / 'back_static'
+STATICFILES_DIRS = [
+    BASE_DIR / 'locale_static'
+]
 
 MEDIA_URL = '/back_media/'
 MEDIA_ROOT = BASE_DIR / 'back_media'
@@ -139,9 +150,9 @@ MEDIA_ROOT = BASE_DIR / 'back_media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-JAZZMIN_SETTINGS = JAZZMIN_SETTINGS
-
-JAZZMIN_UI_TWEAKS = JAZZMIN_UI_TWEAKS
+# JAZZMIN_SETTINGS = JAZZMIN_SETTINGS
+#
+# JAZZMIN_UI_TWEAKS = JAZZMIN_UI_TWEAKS
 
 customColorPalette = customColorPalette
 
