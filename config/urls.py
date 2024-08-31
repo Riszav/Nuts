@@ -24,8 +24,8 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, Spec
 from django.conf import settings
 
 urlpatterns = [
-    path('i18n/', include('django.conf.urls.i18n')),  # Добавьте этот путь
-
+    # path('i18n/', include('django.conf.urls.i18n')),  # Добавьте этот путь
+    path('admin/', admin.site.urls),
     path('schema/', SpectacularAPIView.as_view(), name='schema'),
     path('swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
@@ -37,9 +37,9 @@ urlpatterns = [
     path('api/v1/', include('src.apps.generals.urls')),
 ]
 
-urlpatterns += i18n_patterns(
-    path('admin/', admin.site.urls),
-)
+# urlpatterns += i18n_patterns(
+#
+# )
 
 urlpatterns += ([
     path("ckeditor5/", include('django_ckeditor_5.urls')),
