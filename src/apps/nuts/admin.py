@@ -1,8 +1,11 @@
 from django.contrib import admin
-from mixins.translations_mixins import TranslatorMediaMixin, TranslationStackedInlineMixin, TranslationMixin
 from .models import Category, Product, Recipe, Price
 from modeltranslation.admin import TabbedTranslationAdmin, TranslationStackedInline
 from unfold.admin import ModelAdmin, StackedInline
+from django.utils.safestring import mark_safe
+from django.utils.translation import gettext_lazy as _
+from django.db.models import Q
+
 from django.contrib.auth import admin as base_admin
 from django.contrib.auth.models import User, Group
 from django.utils.translation import gettext_lazy as _
@@ -11,6 +14,9 @@ from django.contrib.auth.forms import (
     UserChangeForm,
     UserCreationForm,
 )
+
+
+''''''''''''''''''''''''''''START AUTH USER AND GROUP REGISTER'''''''''''''''''''''''''''''
 
 
 admin.site.unregister(User)
@@ -75,11 +81,15 @@ class CustomGroupAdmin(ModelAdmin, base_admin.GroupAdmin):
         return super().formfield_for_manytomany(db_field, request=request, **kwargs)
 
 
+''''''''''''''''''''''''''''END AUTH USER AND GROUP REGISTER'''''''''''''''''''''''''''''
+
+
 @admin.register(Category)
 class CategoryAdmin(ModelAdmin, TabbedTranslationAdmin):
     list_display = ['id', 'name']
     list_display_links = ['id', 'name']
-    search_fields = ("category", "title")
+    search_fields = ("name_ru", 'name_en', )
+
     class Media:
         js = ('translate/autotranslate.js',)
 
@@ -96,28 +106,29 @@ class ProductPriceInline(StackedInline, TranslationStackedInline):
 
 @admin.register(Product)
 class ProductAdmin(ModelAdmin, TabbedTranslationAdmin):
-    list_display = ['id', 'hit_of_sales', 'name', 'category']
-    list_display_links = ['id', 'name']
+    list_display = ['id', 'hit_of_sales', 'name', 'product_image', 'category']
+    list_display_links = ['id', 'hit_of_sales', 'name', 'product_image', 'category']
     inlines = (ProductPriceInline,)
     autocomplete_fields = ("category", )
+    search_fields = ('name_ru', 'name_en')
 
     class Media:
         js = ('translate/autotranslate.js',)
 
-
-# class AditionalStepsInline(TranslationTabularInlineMixin):
-#     model = AditionalStep
-#     fields = ['title', 'description']
-#     extra = 0
-#
-#     class Media:
-#         js = ('translate/autotranslate.js',)
+    @admin.display(description=_('Image'))
+    def product_image(self, img: Product):
+        return mark_safe(f"<img src='{img.image.url}' width=50 style='border-radius: 5px;>'")
 
 
 @admin.register(Recipe)
 class RecipeAdmin(ModelAdmin, TabbedTranslationAdmin):
-    list_display = ['id', 'product']
-    list_display_links = ['id', 'product']
+    list_display = ['id', 'product', 'recipe_image']
+    list_display_links = ['id', 'product', 'recipe_image']
+    autocomplete_fields = ("product", )
     
     class Media:
         js = ('translate/autotranslate.js',)
+
+    @admin.display(description=_('Image'))
+    def recipe_image(self, img: Recipe):
+        return mark_safe(f"<img src='{img.image.url}' width=50 style='border-radius: 5px;>'")

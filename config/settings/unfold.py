@@ -42,17 +42,17 @@ UNFOLD = {
     # ],
     "COLORS": {
         "primary": {
-            "50": "250 245 255",
-            "100": "243 232 255",
-            "200": "233 213 255",
-            "300": "216 180 254",
-            "400": "192 132 252",
-            "500": "168 85 247",
-            "600": "147 51 234",
-            "700": "126 34 206",
-            "800": "107 33 168",
-            "900": "88 28 135",
-            "950": "59 7 100",
+            "50": "255 250 240",
+            "100": "254 243 199",
+            "200": "253 230 138",
+            "300": "252 211 77",
+            "400": "251 191 36",
+            "500": "245 158 11",
+            "600": "217 119 6",
+            "700": "180 83 9",
+            "800": "146 64 14",
+            "900": "120 53 15",
+            "950": "69 26 3"
         },
     },
     "EXTENSIONS": {
@@ -63,31 +63,75 @@ UNFOLD = {
             },
         },
     },
-    # "SIDEBAR": {
-    #     "show_search": False,  # Search in applications and models names
-    #     "show_all_applications": False,  # Dropdown with all applications and models
-    #     "navigation": [
-    #         {
-    #             "title": _("Navigation"),
-    #             "separator": True,  # Top border
-    #             "collapsible": True,  # Collapsible group of links
-    #             "items": [
-    #                 {
-    #                     "title": _("Dashboard"),
-    #                     "icon": "dashboard",  # Supported icon set: https://fonts.google.com/icons
-    #                     "link": reverse_lazy("admin:index"),
-    #                     "badge": "sample_app.badge_callback",
-    #                     "permission": lambda request: request.user.is_superuser,
-    #                 },
-    #                 {
-    #                     "title": _("Users"),
-    #                     "icon": "people",
-    #                     "link": reverse_lazy("admin:auth_user_changelist"),
-    #                 },
-    #             ],
-    #         },
-    #     ],
-    # },
+    "SIDEBAR": {
+        "show_search": True,  # Search in applications and models names
+        "show_all_applications": True,  # Dropdown with all applications and models
+        "navigation": [
+            {
+                "title": _("Catalog"),
+                "separator": True,  # Top border
+                "collapsible": False,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Products"),
+                        "icon": "inventory_2",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:nuts_product_changelist"),
+                    },
+                    {
+                        "title": _("Category"),
+                        "icon": "category",
+                        "link": reverse_lazy("admin:nuts_category_changelist"),
+                    },
+                    {
+                        "title": _("Recipe"),
+                        "icon": "menu_book",
+                        "link": reverse_lazy("admin:nuts_recipe_changelist"),
+                    }
+                ],
+            },
+            {
+                "title": _("Generals"),
+                "separator": True,  # Top border
+                "collapsible": False,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Questions"),
+                        "icon": "indeterminate_question_box",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:generals_faq_changelist"),
+                    },
+                    {
+                        "title": _("Contacts"),
+                        "icon": "contacts",
+                        "link": reverse_lazy("admin:generals_contact_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("News"),
+                "separator": True,  # Top border
+                "collapsible": False,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("News"),
+                        "icon": "newsmode",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:news_news_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Users"),
+                "separator": True,  # Top border
+                "collapsible": False,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Users"),
+                        "icon": "people",
+                        "link": reverse_lazy("admin:auth_user_changelist"),
+                    },
+                ],
+            },
+        ],
+    },
     # "TABS": [
     #     {
     #         "models": [
@@ -101,10 +145,13 @@ UNFOLD = {
     #         "items": [
     #             {
     #                 "title": _("Your custom title"),
-    #                 "link": reverse_lazy("admin:app_label_model_name_changelist"),
-    #                 "permission": "sample_app.permission_callback",
+    #                 "link": reverse_lazy("admin:auth_user_changelist"),
     #             },
     #         ],
     #     },
     # ],
 }
+
+
+def badge_callback(request):
+    return 3

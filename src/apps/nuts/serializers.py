@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, Category, Price
+from .models import Product, Category, Price, Recipe
 
 
 class PriceSerializer(serializers.ModelSerializer):
@@ -27,3 +27,15 @@ class CategorySerializer(serializers.ModelSerializer):
     def get_catalogs(self, obj):
         catalogs = obj.catalogs.all()[:8]
         return ProductSerializer(catalogs, many=True).data
+
+
+class CategoryNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['id', 'name',]
+
+
+class RecipeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Recipe
+        fields = ['id', 'product_title', 'description', 'image', 'link']

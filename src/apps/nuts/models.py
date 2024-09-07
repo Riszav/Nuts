@@ -1,7 +1,5 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from mixins.translations_mixins import TranslationMixin
-from django_ckeditor_5.fields import CKEditor5Field
 from utils import compress
 
 
@@ -27,7 +25,7 @@ class Product(models.Model):
     fields_to_translate = ['name']
 
     def __str__(self):
-        return self.name
+        return f'{self.name_ru} - {self.name_en}'
 
     class Meta:
         verbose_name = _('product')
@@ -59,6 +57,10 @@ class Recipe(models.Model):
 
     fields_to_translate = ['description']
 
+    @property
+    def product_title(self):
+        return self.product.name
+
     class Meta:
         verbose_name = _('recipe')
         verbose_name_plural = _('recipes')
@@ -68,25 +70,3 @@ class Recipe(models.Model):
         new_image = compress(self.image)
         self.image = new_image
         super().save(*args, **kwargs)
-
-# class Recipe(models.Model):
-#     title = models.CharField(_("title"), max_length=100)
-#     ingredients = CKEditor5Field(_("ingredients"), config_name='extends')
-#     cooking_method = CKEditor5Field(_("cooking method"), config_name='extends')
-#     # add_step = models.ManyToManyField('AditionalSteps', verbose_name=_("additional steps"), blank=True)
-#
-#     class Meta:
-#         verbose_name = _('recipe')
-#         verbose_name_plural = _('recipes')
-#         db_table = 'recipe'
-
-#
-# class AditionalStep(models.Model):
-#     title = models.CharField(_("title"), max_length=100)
-#     description = CKEditor5Field(_("step"), config_name='extends')
-#     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='addition_steps', verbose_name=_("recipe"))
-#
-#     class Meta:
-#         verbose_name = _('additional step')
-#         verbose_name_plural = _('additional steps')
-#         db_table = 'additional_step'

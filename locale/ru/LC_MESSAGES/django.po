@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-31 14:19+0600\n"
+"POT-Creation-Date: 2024-09-06 19:55+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,9 +54,47 @@ msgstr ""
 msgid " "
 msgstr ""
 
-#: .\src\apps\generals\apps.py:8
+#: .\config\settings\unfold.py:71 .\src\apps\nuts\apps.py:8
+msgid "Catalog"
+msgstr "Каталог"
+
+#: .\config\settings\unfold.py:76
+#| msgid "products"
+msgid "Products"
+msgstr "Продукты"
+
+#: .\config\settings\unfold.py:81
+#| msgid "category"
+msgid "Category"
+msgstr "Категория"
+
+#: .\config\settings\unfold.py:86
+#| msgid "recipe"
+msgid "Recipe"
+msgstr "рецепт"
+
+#: .\config\settings\unfold.py:93 .\src\apps\generals\apps.py:8
 msgid "Generals"
 msgstr "Общие"
+
+#: .\config\settings\unfold.py:98
+#| msgid "questions"
+msgid "Questions"
+msgstr "Вопросы"
+
+#: .\config\settings\unfold.py:103
+#| msgid "contacts"
+msgid "Contacts"
+msgstr "Контакты"
+
+#: .\config\settings\unfold.py:110 .\config\settings\unfold.py:115
+#: .\src\apps\news\apps.py:8
+msgid "News"
+msgstr "Новости"
+
+#: .\config\settings\unfold.py:122 .\config\settings\unfold.py:127
+msgid "Users"
+msgstr "Пользователи"
 
 #: .\src\apps\generals\models.py:18 .\src\apps\generals\models.py:27
 msgid "question"
@@ -110,21 +148,17 @@ msgstr "контакт"
 msgid "contacts"
 msgstr "контакты"
 
-#: .\src\apps\news\apps.py:8
-msgid "News"
-msgstr "Новости"
-
 #: .\src\apps\news\models.py:7
 msgid "title"
 msgstr "заголовок"
 
-#: .\src\apps\news\models.py:8 .\src\apps\nuts\models.py:22
-#: .\src\apps\nuts\models.py:56
+#: .\src\apps\news\models.py:8 .\src\apps\nuts\models.py:20
+#: .\src\apps\nuts\models.py:54
 msgid "description"
 msgstr "описание"
 
-#: .\src\apps\news\models.py:9 .\src\apps\nuts\models.py:25
-#: .\src\apps\nuts\models.py:57
+#: .\src\apps\news\models.py:9 .\src\apps\nuts\models.py:23
+#: .\src\apps\nuts\models.py:55
 msgid "image"
 msgstr "изображение"
 
@@ -148,56 +182,52 @@ msgstr ""
 msgid "Important dates"
 msgstr ""
 
-#: .\src\apps\nuts\apps.py:8
-msgid "Catalog"
-msgstr "Каталог"
-
-#: .\src\apps\nuts\models.py:9 .\src\apps\nuts\models.py:21
+#: .\src\apps\nuts\models.py:7 .\src\apps\nuts\models.py:19
 msgid "name"
 msgstr "название"
 
-#: .\src\apps\nuts\models.py:15 .\src\apps\nuts\models.py:24
+#: .\src\apps\nuts\models.py:13 .\src\apps\nuts\models.py:22
 msgid "category"
 msgstr "категория"
 
-#: .\src\apps\nuts\models.py:16
+#: .\src\apps\nuts\models.py:14
 msgid "categories"
 msgstr "категории"
 
-#: .\src\apps\nuts\models.py:23
+#: .\src\apps\nuts\models.py:21
 msgid "hit of sales"
 msgstr "хит продаж"
 
-#: .\src\apps\nuts\models.py:33 .\src\apps\nuts\models.py:44
-#: .\src\apps\nuts\models.py:55
+#: .\src\apps\nuts\models.py:31 .\src\apps\nuts\models.py:42
+#: .\src\apps\nuts\models.py:53
 msgid "product"
 msgstr "продукт"
 
-#: .\src\apps\nuts\models.py:34
+#: .\src\apps\nuts\models.py:32
 msgid "products"
 msgstr "продукты"
 
-#: .\src\apps\nuts\models.py:45
+#: .\src\apps\nuts\models.py:43
 msgid "volume"
 msgstr "объем"
 
-#: .\src\apps\nuts\models.py:49
+#: .\src\apps\nuts\models.py:47
 msgid "price"
 msgstr "цена"
 
-#: .\src\apps\nuts\models.py:50
+#: .\src\apps\nuts\models.py:48
 msgid "prices"
 msgstr "цены"
 
-#: .\src\apps\nuts\models.py:58
+#: .\src\apps\nuts\models.py:56
 msgid "link"
 msgstr "ссылка"
 
-#: .\src\apps\nuts\models.py:63
+#: .\src\apps\nuts\models.py:61
 msgid "recipe"
 msgstr "рецепт"
 
-#: .\src\apps\nuts\models.py:64
+#: .\src\apps\nuts\models.py:62
 msgid "recipes"
 msgstr "рецепты"
 
@@ -1479,11 +1509,11 @@ msgstr ""
 #: .\venv\Lib\site-packages\unfold\admin.py:155
 #: .\venv\Lib\site-packages\unfold\admin.py:176
 msgid "Select value"
-msgstr ""
+msgstr "Выберите значение"
 
 #: .\venv\Lib\site-packages\unfold\admin.py:533
 msgid "Select action"
-msgstr ""
+msgstr "Выберите действие"
 
 #: .\venv\Lib\site-packages\unfold\contrib\filters\admin.py:58
 #: .\venv\Lib\site-packages\unfold\contrib\filters\admin.py:116

@@ -67,7 +67,7 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'DEFAULT_PAGINATION_CLASS': 'config.pagination.CustomPageNumberPagination',
     'PAGE_SIZE': 10,
     'DATETIME_FORMAT': '%d.%m.%Y %H:%M',
     'DATE_FORMAT': '%d.%m.%Y',

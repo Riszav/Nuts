@@ -1,13 +1,13 @@
 from django.contrib import admin
 from unfold.admin import ModelAdmin
 from modeltranslation.admin import TabbedTranslationAdmin
-from mixins.translations_mixins import TranslatorMediaMixin, TranslationStackedInlineMixin, TranslationTabularInlineMixin
 from .models import Contact, FAQ
 
 
 @admin.register(FAQ)
 class FAQAdmin(ModelAdmin, TabbedTranslationAdmin):
     list_display = ('question', 'answer')
+    list_display_links = ('question', 'answer')
 
     class Media:
         js = ('translate/autotranslate.js',)
@@ -16,6 +16,7 @@ class FAQAdmin(ModelAdmin, TabbedTranslationAdmin):
 @admin.register(Contact)
 class ContactAdmin(ModelAdmin, TabbedTranslationAdmin):
     list_display = ('phone1', 'phone2', 'email', 'address')
+    list_display_links = ('phone1', 'phone2', 'email', 'address')
 
     class Media:
         js = ('translate/autotranslate.js',)
