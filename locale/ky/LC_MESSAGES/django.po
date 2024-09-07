@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-06 19:55+0600\n"
+"POT-Creation-Date: 2024-09-07 20:29+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,88 +155,94 @@ msgstr "байланыш"
 msgid "contacts"
 msgstr "байланыштар"
 
-#: .\src\apps\news\models.py:7
+#: .\src\apps\news\admin.py:19 .\src\apps\nuts\admin.py:118
+#: .\src\apps\nuts\admin.py:132
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:393
+msgid "Image"
+msgstr ""
+
+#: .\src\apps\news\models.py:9
 msgid "title"
 msgstr "аталышы"
 
-#: .\src\apps\news\models.py:8 .\src\apps\nuts\models.py:20
-#: .\src\apps\nuts\models.py:54
+#: .\src\apps\news\models.py:10 .\src\apps\nuts\models.py:22
+#: .\src\apps\nuts\models.py:62
 msgid "description"
 msgstr "сүрөттөмө"
 
-#: .\src\apps\news\models.py:9 .\src\apps\nuts\models.py:23
-#: .\src\apps\nuts\models.py:55
+#: .\src\apps\news\models.py:11 .\src\apps\nuts\models.py:25
+#: .\src\apps\nuts\models.py:63
 msgid "image"
 msgstr "сүрөт"
 
-#: .\src\apps\news\models.py:10
+#: .\src\apps\news\models.py:18
 msgid "date"
 msgstr "дата"
 
-#: .\src\apps\news\models.py:18 .\src\apps\news\models.py:19
+#: .\src\apps\news\models.py:26 .\src\apps\news\models.py:27
 msgid "news"
 msgstr "жаңылыктар"
 
-#: .\src\apps\nuts\admin.py:26
+#: .\src\apps\nuts\admin.py:32
 msgid "Personal info"
 msgstr ""
 
-#: .\src\apps\nuts\admin.py:28
+#: .\src\apps\nuts\admin.py:34
 #, fuzzy
 #| msgid "questions"
 msgid "Permissions"
 msgstr "суроолор"
 
-#: .\src\apps\nuts\admin.py:39
+#: .\src\apps\nuts\admin.py:45
 msgid "Important dates"
 msgstr ""
 
-#: .\src\apps\nuts\models.py:7 .\src\apps\nuts\models.py:19
+#: .\src\apps\nuts\models.py:9 .\src\apps\nuts\models.py:21
 msgid "name"
 msgstr "аты"
 
-#: .\src\apps\nuts\models.py:13 .\src\apps\nuts\models.py:22
+#: .\src\apps\nuts\models.py:15 .\src\apps\nuts\models.py:24
 msgid "category"
 msgstr "категория"
 
-#: .\src\apps\nuts\models.py:14
+#: .\src\apps\nuts\models.py:16
 msgid "categories"
 msgstr "категориялар"
 
-#: .\src\apps\nuts\models.py:21
+#: .\src\apps\nuts\models.py:23
 msgid "hit of sales"
 msgstr ""
 
-#: .\src\apps\nuts\models.py:31 .\src\apps\nuts\models.py:42
-#: .\src\apps\nuts\models.py:53
+#: .\src\apps\nuts\models.py:39 .\src\apps\nuts\models.py:50
+#: .\src\apps\nuts\models.py:61
 msgid "product"
 msgstr ""
 
-#: .\src\apps\nuts\models.py:32
+#: .\src\apps\nuts\models.py:40
 msgid "products"
 msgstr ""
 
-#: .\src\apps\nuts\models.py:43
+#: .\src\apps\nuts\models.py:51
 msgid "volume"
 msgstr ""
 
-#: .\src\apps\nuts\models.py:47
+#: .\src\apps\nuts\models.py:55
 msgid "price"
 msgstr ""
 
-#: .\src\apps\nuts\models.py:48
+#: .\src\apps\nuts\models.py:56
 msgid "prices"
 msgstr ""
 
-#: .\src\apps\nuts\models.py:56
+#: .\src\apps\nuts\models.py:69
 msgid "link"
 msgstr ""
 
-#: .\src\apps\nuts\models.py:61
+#: .\src\apps\nuts\models.py:78
 msgid "recipe"
 msgstr ""
 
-#: .\src\apps\nuts\models.py:62
+#: .\src\apps\nuts\models.py:79
 msgid "recipes"
 msgstr ""
 
@@ -660,10 +666,6 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\files.py:232
 msgid "File"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\files.py:393
-msgid "Image"
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\json.py:26
