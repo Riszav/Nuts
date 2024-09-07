@@ -1,12 +1,20 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from utils import compress
+from config.validations import validate_horizontal_image
+from django.utils.safestring import mark_safe
 
 
 class News(models.Model):
     title = models.CharField(_("title"), max_length=50)
     description = models.TextField(_("description"))
-    image = models.ImageField(_("image"), upload_to='news_images')
+    image = models.ImageField(_("image"),
+                              upload_to='news_images',
+                              help_text=mark_safe(
+                                  '<p>Изображение должно быть горизонтальным.</p> '
+                                  '<p>Разрешенный формат изображения: <strong>img, jpg, jpeg, png</strong>.</p>'
+                              ),
+                              validators=[validate_horizontal_image, ])
     date = models.DateField(_("date"), auto_now_add=True)
 
     fields_to_translate = ['title', 'description']

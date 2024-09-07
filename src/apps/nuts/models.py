@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from utils import compress
+from config.validations import validate_square_image, validate_png_image
+from django.utils.safestring import mark_safe
 
 
 class Category(models.Model):
@@ -20,7 +22,13 @@ class Product(models.Model):
     description = models.TextField(_("description"), blank=True)
     hit_of_sales = models.BooleanField(default=False, verbose_name=_("hit of sales"))
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='catalogs', verbose_name=_("category"))
-    image = models.ImageField(_("image"), upload_to='catalog_images', help_text='Разрешенный формат изображения img, jpg, jpeg, phg.')
+    image = models.ImageField(verbose_name=_("image"),
+                              upload_to='catalog_images',
+                              help_text=mark_safe(
+                                  '<p>Соотношение изображений должно быть <strong>1 на 1</strong> (квадратным).</p> '
+                                  '<p>Разрешенный формат изображения: <strong>img, jpg, jpeg, png</strong>.</p>'
+                              ),
+                              validators=[validate_square_image, ])
 
     fields_to_translate = ['name']
 
@@ -52,7 +60,12 @@ class Price(models.Model):
 class Recipe(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='recipes', verbose_name=_("product"))
     description = models.TextField(_("description"), blank=True)
-    image = models.ImageField(_("image"), upload_to='recipe_images')
+    image = models.ImageField(_("image"),
+                              upload_to='recipe_images',
+                              help_text=mark_safe(
+                                  'Изображение должно быть в формате "PNG".'
+                              ),
+                              validators=[validate_png_image, ])
     link = models.URLField(_("link"))
 
     fields_to_translate = ['description']
