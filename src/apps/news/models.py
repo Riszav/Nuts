@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from utils import compress
+from config.utils import compress
 from config.validations import validate_horizontal_image
 from django.utils.safestring import mark_safe
 

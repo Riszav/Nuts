@@ -2,9 +2,32 @@ from django.shortcuts import render
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from .serializers import *
 from .models import Product, Category, Recipe
-from drf_spectacular.utils import extend_schema, extend_schema_view
+from drf_spectacular.utils import extend_schema, extend_schema_view, OpenApiParameter, OpenApiResponse
+from drf_spectacular.types import OpenApiTypes
+from rest_framework import filters
 from rest_framework.response import Response
 from config.pagination import CustomPageNumberPagination
+
+
+@extend_schema(tags=["ПОИСК ПО ПРОДУКТАМ"])
+@extend_schema_view(
+    get=extend_schema(
+        summary='ПОЛУЧЕНИЕ СПИСКА ПРОДУКТОВ ',
+        description='Возвращает список всех доступных продуктов с возможностью поиска и фильтрации.',
+        parameters=[
+            OpenApiParameter(name='search', description='Поиск по названию продукта', required=False, type=OpenApiTypes.STR)
+        ],
+        responses={
+            200: ProductSerializer(many=True),
+            400: OpenApiResponse(description='Неверный запрос')
+        }
+    )
+)
+class ProductSearchListAPIView(ListAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name_ru', 'name_en']
 
 
 @extend_schema(tags=["ТОПОВЫЕ ПРОДУКТЫ"])
