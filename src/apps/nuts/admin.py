@@ -93,6 +93,13 @@ class CategoryAdmin(ModelAdmin, TabbedTranslationAdmin):
     class Media:
         js = ('translate/autotranslate.js',)
 
+    def has_add_permission(self, request):
+        num_objects = self.model.objects.count()
+        if num_objects >= 3:
+            return False
+        else:
+            return True
+
 
 class ProductPriceInline(StackedInline, TranslationStackedInline):
     model = Price
@@ -132,3 +139,10 @@ class RecipeAdmin(ModelAdmin, TabbedTranslationAdmin):
     @admin.display(description=_('Image'))
     def recipe_image(self, img: Recipe):
         return mark_safe(f"<img src='{img.image.url}' width=50 style='border-radius: 5px;>'")
+    
+    def has_add_permission(self, request):
+        num_objects = self.model.objects.count()
+        if num_objects >= 4:
+            return False
+        else:
+            return True
