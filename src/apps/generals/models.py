@@ -33,8 +33,8 @@ class FAQ(models.Model):
 class WhatsAppNumber(models.Model):
     number = models.DecimalField(_('WhatsApp admin number'), max_digits=12, decimal_places=0, help_text=_('Phone number format - 996XXXXXXXХХ'))
 
-    def __str__(self) -> str:
-        return self.number
+    def __str__(self):
+        return f'{self.number}'
     
     class Meta:
         verbose_name = _('WhatsApp admin number')

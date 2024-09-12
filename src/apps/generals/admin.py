@@ -41,3 +41,18 @@ class ContactAdmin(ModelAdmin, TabbedTranslationAdmin):
 class WhatsAppAdmin(ModelAdmin):
     list_display = ('number',)
     list_display_links = ('number',)
+
+    def save_model(self, request, obj, form, change):
+        """
+        Разрешаем изменение только первой записи, если она существует.
+        """
+        if WhatsAppNumber.objects.exists() and not change:
+            raise ValueError('Можно создать только одну запись.')
+        super().save_model(request, obj, form, change)
+
+    def has_add_permission(self, request):
+        num_objects = self.model.objects.count()
+        if num_objects >= 1:
+            return False
+        else:
+            return True
