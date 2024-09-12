@@ -304,41 +304,41 @@ msgstr "рецепт"
 msgid "recipes"
 msgstr "рецепты"
 
-#~ msgid "Select value"
-#~ msgstr "Выберите значение"
+msgid "Select value"
+msgstr "Выберите значение"
 
-#~ msgid "Select action"
-#~ msgstr "Выберите действие"
+msgid "Select action"
+msgstr "Выберите действие"
 
-#~ msgid "Welcome back to"
-#~ msgstr "Добро пожаловать в"
+msgid "Welcome back to"
+msgstr "Добро пожаловать в"
 
-#~ msgid "Return to site"
-#~ msgstr "Вернуться к сайту"
+msgid "Return to site"
+msgstr "Вернуться к сайту"
 
-#~ msgid "Type to search"
-#~ msgstr "Напишите для поиска"
+msgid "Type to search"
+msgstr "Напишите для поиска"
 
-#~ msgid "You have been successfully logged out from the administration"
-#~ msgstr "Вы успешно вышли из администрирования"
+msgid "You have been successfully logged out from the administration"
+msgstr "Вы успешно вышли из администрирования"
 
-#~ msgid "All applications"
-#~ msgstr "Все приложения"
+msgid "All applications"
+msgstr "Все приложения"
 
-#~ msgid "Search apps and models..."
-#~ msgstr "Поиск моделей и приложений..."
+msgid "Search apps and models..."
+msgstr "Поиск моделей и приложений..."
 
-#~ msgid "Please correct the errors below."
-#~ msgstr "Пожалуйста, исправьте ошибки ниже"
+msgid "Please correct the errors below."
+msgstr "Пожалуйста, исправьте ошибки ниже"
 
-#~ msgid "General"
-#~ msgstr "Общие"
+msgid "General"
+msgstr "Общие"
 
-#~ msgid "Dark"
-#~ msgstr "Темная"
+msgid "Dark"
+msgstr "Темная"
 
-#~ msgid "Light"
-#~ msgstr "Светлая"
+msgid "Light"
+msgstr "Светлая"
 
-#~ msgid "System"
-#~ msgstr "Системная"
+msgid "System"
+msgstr "Системная"

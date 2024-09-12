@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from .views import translate_text
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+from debug_toolbar.toolbar import debug_toolbar_urls
 
 from django.conf import settings
 
@@ -36,7 +37,7 @@ urlpatterns = [
     path('api/v1/', include('src.apps.news.urls')),
     path('api/v1/', include('src.apps.generals.urls')),
     path('api/v1/', include('src.apps.about_us.urls'))
-]
+] + debug_toolbar_urls()
 
 # urlpatterns += i18n_patterns(
 #

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_ckeditor_5',
     'drf_spectacular',
     'pytest',
+    "debug_toolbar",
 
     'src.apps.nuts',
     'src.apps.news',
@@ -64,6 +65,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+    "35.183.81.168",
 ]
 
 REST_FRAMEWORK = {
