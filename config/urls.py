@@ -35,6 +35,7 @@ urlpatterns = [
     path('api/v1/', include('src.apps.nuts.urls')),
     path('api/v1/', include('src.apps.news.urls')),
     path('api/v1/', include('src.apps.generals.urls')),
+    path('api/v1/', include('src.apps.about_us.urls'))
 ]
 
 # urlpatterns += i18n_patterns(

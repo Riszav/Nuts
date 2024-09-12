@@ -1,0 +1,1 @@
+correct_video_formats = ['mp4', 'webm', 'avi', 'mov']

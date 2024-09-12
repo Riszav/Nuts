@@ -119,6 +119,23 @@ UNFOLD = {
                 ],
             },
             {
+                "title": _("About us"),
+                "separator": True,  # Top border
+                "collapsible": False,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("About us"),
+                        "icon": "window",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:about_us_aboutus_changelist"),
+                    },
+                    {
+                        "title": _("Banner"),
+                        "icon": "aspect_ratio",
+                        "link": reverse_lazy("admin:about_us_banner_changelist"),
+                    },
+                ],
+            },
+            {
                 "title": _("Users"),
                 "separator": True,  # Top border
                 "collapsible": False,  # Collapsible group of links

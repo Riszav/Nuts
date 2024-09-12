@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { mainFieldId: 'id_description_ru', targetFieldIds: ['id_description_en',] },
         { mainFieldId: 'id_name_ru', targetFieldIds: ['id_name_en',] },
         { mainFieldId: 'id_volume_ru', targetFieldIds: ['id_volume_en',] },
+        { mainFieldId: 'id_text_ru', targetFieldIds: ['id_text_en',] },
     ];
     translations.forEach(translation => {
         setupTranslation(translation.mainFieldId, translation.targetFieldIds, '/translate/');
