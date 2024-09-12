@@ -1,9 +1,16 @@
 from django.contrib import admin
 from modeltranslation.admin import TabbedTranslationAdmin
-from .models import News
-from unfold.admin import ModelAdmin
+from .models import News, NewsImages
+from unfold.admin import ModelAdmin, StackedInline
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
+
+
+class NewsImagesInline(StackedInline):
+    model = NewsImages
+    fields = ['news', 'image']
+    extra = 1
+    max_num = 10
 
 
 @admin.register(News)
@@ -12,6 +19,7 @@ class NewsAdmin(ModelAdmin, TabbedTranslationAdmin):
     list_display_links = ['title', 'description', 'news_image', 'date']
     list_filter = ['date']
     search_fields = ['title', 'description']
+    inlines = (NewsImagesInline, )
 
     class Media:
         js = ('translate/autotranslate.js',)

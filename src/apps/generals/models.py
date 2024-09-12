@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from config import validations
 
 
 # Create your models here.
@@ -20,7 +21,7 @@ class FAQ(models.Model):
 
     fields_to_translate = ['question', 'answer']
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.question
 
     class Meta:
@@ -29,9 +30,21 @@ class FAQ(models.Model):
         db_table = 'faq'
 
 
+class WhatsAppNumber(models.Model):
+    number = models.DecimalField(_('WhatsApp admin number'), max_digits=12, decimal_places=0, help_text=_('Phone number format - 996XXXXXXXХХ'))
+
+    def __str__(self) -> str:
+        return self.number
+    
+    class Meta:
+        verbose_name = _('WhatsApp admin number')
+        verbose_name_plural = _('WhatsApp admin number')
+        db_table = 'whatsapp_number'
+
+
 class Contact(models.Model):
-    phone1 = models.CharField(_("phone number 1"), max_length=100)
-    phone2 = models.CharField(_("phone number 2"), max_length=100)
+    phone1 = models.CharField(_("phone number 1"), max_length=13, help_text=_('Phone number format - 996XXXXXXXХХ'))
+    phone2 = models.CharField(_("phone number 2"), max_length=13, help_text=_('Phone number format - 996XXXXXXXХХ'))
     email = models.EmailField(_("email"))
     address = models.CharField(_("address"), max_length=200)
     instagram = models.URLField(_("instagram"))

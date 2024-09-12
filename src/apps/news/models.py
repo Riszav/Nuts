@@ -1,8 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from config.utils import compress
-from config.validations import validate_horizontal_image
-from django.utils.safestring import mark_safe
+from config import validations
 
 
 class News(models.Model):
@@ -10,16 +9,12 @@ class News(models.Model):
     description = models.TextField(_("description"))
     image = models.ImageField(_("image"),
                               upload_to='news_images',
-                              help_text=mark_safe(
-                                  '<p>Изображение должно быть горизонтальным.</p> '
-                                  '<p>Разрешенный формат изображения: <strong>img, jpg, jpeg, png</strong>.</p>'
-                              ),
-                              validators=[validate_horizontal_image, ])
+                              **validations.horizontal_image_validator)
     date = models.DateField(_("date"), auto_now_add=True)
 
     fields_to_translate = ['title', 'description']
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.title
 
     class Meta:
@@ -31,3 +26,18 @@ class News(models.Model):
         new_image = compress(self.image)
         self.image = new_image
         super().save(*args, **kwargs)
+
+    
+class NewsImages(models.Model):
+    news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='news_images', verbose_name=_('news'))
+    image = models.ImageField(_("image"),
+                              upload_to='news_gallery',
+                              **validations.horizontal_image_validator)
+    
+    def __str__(self) -> str:
+        return f'{self.pk}'
+    
+    class Meta:
+        verbose_name = _('news image')
+        verbose_name_plural = _('news images')
+        db_table = 'news_images'

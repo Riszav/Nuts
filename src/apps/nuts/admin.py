@@ -8,7 +8,6 @@ from django.db.models import Q
 
 from django.contrib.auth import admin as base_admin
 from django.contrib.auth.models import User, Group
-from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.forms import (
     AdminPasswordChangeForm,
     UserChangeForm,

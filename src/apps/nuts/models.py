@@ -1,14 +1,13 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from config.utils import compress
-from config.validations import validate_square_image, validate_png_image
-from django.utils.safestring import mark_safe
+from config import validations
 
 
 class Category(models.Model):
     name = models.CharField(_("name"), max_length=20)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.name_ru} - {self.name_en}'
 
     class Meta:
@@ -24,15 +23,11 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='catalogs', verbose_name=_("category"))
     image = models.ImageField(verbose_name=_("image"),
                               upload_to='catalog_images',
-                              help_text=mark_safe(
-                                  '<p>Изображение должно быть квадратным.</p> '
-                                  '<p>Разрешенный формат изображения: <strong>img, jpg, jpeg, png</strong>.</p>'
-                              ),
-                              validators=[validate_square_image, ])
+                              **validations.square_image_validator)
 
     fields_to_translate = ['name']
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.name_ru} - {self.name_en}'
 
     class Meta:
@@ -51,6 +46,9 @@ class Price(models.Model):
     volume = models.CharField(max_length=25, verbose_name=_("volume"))
     price = models.DecimalField(max_digits=8, decimal_places=2)
 
+    def __str__(self) -> str:
+        return self.volume
+
     class Meta:
         verbose_name = _('price')
         verbose_name_plural = _('prices')
@@ -62,10 +60,7 @@ class Recipe(models.Model):
     description = models.TextField(_("description"), blank=True)
     image = models.ImageField(_("image"),
                               upload_to='recipe_images',
-                              help_text=mark_safe(
-                                  'Изображение должно быть в формате "PNG".'
-                              ),
-                              validators=[validate_png_image, ])
+                              **validations.png_image_validator)
     link = models.URLField(_("link"))
 
     fields_to_translate = ['description']
