@@ -1,11 +1,19 @@
 from rest_framework import serializers
 from .models import Product, Category, Price, Recipe
+from decouple import config
+from .utils import ProductWhatsAppLinkGenerator
 
 
 class PriceSerializer(serializers.ModelSerializer):
+    order_link = serializers.SerializerMethodField()
+     
     class Meta:
         model = Price
-        fields = ['id', 'volume', 'price']
+        fields = ['id', 'volume', 'price', 'order_link']
+
+    def get_order_link(self, obj):
+        admin_number = self.context.get('admin_number', config('DEFAULT_WHATSAPP_NUMBER'))
+        return ProductWhatsAppLinkGenerator.generate_whatsapp_link(obj, admin_number)
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -15,6 +23,13 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ['id', 'name', 'image', 'hit_of_sales', 'prices']
+
+
+class ProductHitSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Product
+        fields = ['id', 'name', 'image', 'hit_of_sales',]
 
 
 class CategorySerializer(serializers.ModelSerializer):

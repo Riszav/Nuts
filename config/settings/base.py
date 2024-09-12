@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'src.apps.nuts',
     'src.apps.news',
     'src.apps.generals',
+    'src.apps.about_us',
     'django_seed'
 ]
 

@@ -2,11 +2,13 @@ from django.shortcuts import render
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from .serializers import *
 from .models import Product, Category, Recipe
+from src.apps.generals.models import WhatsAppNumber
 from drf_spectacular.utils import extend_schema, extend_schema_view, OpenApiParameter, OpenApiResponse
 from drf_spectacular.types import OpenApiTypes
 from rest_framework import filters
 from rest_framework.response import Response
 from config.pagination import CustomPageNumberPagination
+from decouple import config
 
 
 @extend_schema(tags=["ПОИСК"])
@@ -38,7 +40,7 @@ class ProductSearchListAPIView(ListAPIView):
 )
 class ProductHitListAPIView(ListAPIView):
     queryset = Product.objects.filter(hit_of_sales=True)
-    serializer_class = ProductSerializer
+    serializer_class = ProductHitSerializer
 
 
 @extend_schema(tags=["КАТЕГОРИЯ"])
@@ -52,6 +54,11 @@ class CategoryListAPIView(ListAPIView):
     serializer_class = CategorySerializer
     pagination_class = None
 
+def get_serializer_context(self):
+        context = super().get_serializer_context()
+        admin_number = WhatsAppNumber.objects.first()
+        context['admin_number'] = admin_number.number if admin_number else config('DEFAULT_WHATSAPP_NUMBER')
+        return context
 
 @extend_schema(tags=["КАТЕГОРИЯ"])
 @extend_schema_view(
@@ -77,6 +84,12 @@ class CategoryDetailAPIView(ListAPIView):
     pagination_class = CustomPageNumberPagination
     lookup_field = 'pk'
 
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        admin_number = WhatsAppNumber.objects.first()
+        context['admin_number'] = admin_number.number if admin_number else config('DEFAULT_WHATSAPP_NUMBER')
+        return context
+
     def get(self, request, *args, **kwargs):
         category = Category.objects.get(pk=kwargs['pk'])
         queryset = self.queryset.filter(category=category)
@@ -94,6 +107,7 @@ class CategoryDetailAPIView(ListAPIView):
         }, status=200)
 
 
+@extend_schema(tags=["РЕЦЕПТЫ"])
 @extend_schema_view(
     get=extend_schema(
         summary='ПОЛУЧЕНИЕ ВСЕХ РЕЦЕПТОВ'
