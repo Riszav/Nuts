@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from config.pagination import CustomPageNumberPagination
 
 
-@extend_schema(tags=["ПОИСК ПО ПРОДУКТАМ"])
+@extend_schema(tags=["ПОИСК"])
 @extend_schema_view(
     get=extend_schema(
         summary='ПОЛУЧЕНИЕ СПИСКА ПРОДУКТОВ ',

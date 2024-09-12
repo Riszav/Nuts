@@ -25,7 +25,7 @@ class Product(models.Model):
     image = models.ImageField(verbose_name=_("image"),
                               upload_to='catalog_images',
                               help_text=mark_safe(
-                                  '<p>Соотношение изображений должно быть <strong>1 на 1</strong> (квадратным).</p> '
+                                  '<p>Изображение должно быть квадратным.</p> '
                                   '<p>Разрешенный формат изображения: <strong>img, jpg, jpeg, png</strong>.</p>'
                               ),
                               validators=[validate_square_image, ])

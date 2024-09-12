@@ -6,8 +6,12 @@ import imghdr
 
 def validate_square_image(image):
     img = Image.open(image)
-    if img.width != img.height:
-        raise ValidationError("Изображение должно быть квадратным (ширина должна быть равна высоте).")
+    ratio = img.width / img.height
+    print("=========================================================================")
+    print(f"================================{ratio}=================================")
+    print("=========================================================================")
+    if ratio < 0.9 or ratio > 1.1:
+        raise ValidationError("Изображение должно быть квадратным.")
 
 
 def validate_horizontal_image(image):
