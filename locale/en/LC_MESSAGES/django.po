@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-12 18:33+0600\n"
+"POT-Creation-Date: 2024-09-13 00:58+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,39 +58,97 @@ msgstr ""
 msgid "Contacts"
 msgstr ""
 
-#: config/settings/unfold.py:110 config/settings/unfold.py:115
+#: config/settings/unfold.py:108
+msgid "Whats App"
+msgstr ""
+
+#: config/settings/unfold.py:115 config/settings/unfold.py:120
 #: src/apps/news/apps.py:8
 msgid "News"
 msgstr ""
 
-#: config/settings/unfold.py:122 config/settings/unfold.py:127
+#: config/settings/unfold.py:127 config/settings/unfold.py:132
+#: src/apps/about_us/apps.py:8
+msgid "About us"
+msgstr ""
+
+#: config/settings/unfold.py:137
+msgid "Banner"
+msgstr ""
+
+#: config/settings/unfold.py:144 config/settings/unfold.py:149
 msgid "Users"
 msgstr ""
 
-#: config/validations.py:11
+#: config/validations.py:12
 msgid "Invalid image. The image must be square."
 msgstr ""
 
-#: config/validations.py:15
+#: config/validations.py:16
 msgid "The image must be square"
 msgstr ""
 
-#: config/validations.py:23
+#: config/validations.py:24
 msgid ""
 "Invalid image. The image must be horizontal (width must be greater than "
 "height)."
 msgstr ""
 
-#: config/validations.py:27
+#: config/validations.py:28
 msgid "The image must be horizontal"
 msgstr ""
 
-#: config/validations.py:35
+#: config/validations.py:36
 msgid "Invalid image format. Allowed format is \"PNG\"."
 msgstr ""
 
-#: config/validations.py:39
+#: config/validations.py:40
 msgid "The image must be \"PNG\" format"
+msgstr ""
+
+#: config/validations.py:51
+#, python-brace-format
+msgid "Invalid video format. Allowed format: {allowed_formats}"
+msgstr ""
+
+#: config/validations.py:55
+#, python-brace-format
+msgid "The video in format: {constant.correct_video_formats}"
+msgstr ""
+
+#: src/apps/about_us/admin.py:17 src/apps/news/admin.py:27
+#: src/apps/nuts/admin.py:124 src/apps/nuts/admin.py:138
+msgid "Image"
+msgstr ""
+
+#: src/apps/about_us/models.py:9
+msgid "text"
+msgstr ""
+
+#: src/apps/about_us/models.py:10 src/apps/about_us/models.py:22
+#: src/apps/news/models.py:10 src/apps/news/models.py:33
+#: src/apps/nuts/models.py:24 src/apps/nuts/models.py:61
+msgid "image"
+msgstr ""
+
+#: src/apps/about_us/models.py:16 src/apps/about_us/models.py:17
+msgid "about us"
+msgstr ""
+
+#: src/apps/about_us/models.py:23
+msgid "video"
+msgstr ""
+
+#: src/apps/about_us/models.py:26 src/apps/about_us/models.py:27
+msgid "banner"
+msgstr ""
+
+#: src/apps/about_us/models.py:35
+msgid "Either image or video must be provided."
+msgstr ""
+
+#: src/apps/about_us/models.py:37
+msgid "You cannot fill in both fields."
 msgstr ""
 
 #: src/apps/generals/models.py:19 src/apps/generals/models.py:28
@@ -155,11 +213,6 @@ msgstr ""
 msgid "contacts"
 msgstr ""
 
-#: src/apps/news/admin.py:27 src/apps/nuts/admin.py:124
-#: src/apps/nuts/admin.py:138
-msgid "Image"
-msgstr ""
-
 #: src/apps/news/models.py:8
 msgid "title"
 msgstr ""
@@ -167,11 +220,6 @@ msgstr ""
 #: src/apps/news/models.py:9 src/apps/nuts/models.py:21
 #: src/apps/nuts/models.py:60
 msgid "description"
-msgstr ""
-
-#: src/apps/news/models.py:10 src/apps/news/models.py:33
-#: src/apps/nuts/models.py:24 src/apps/nuts/models.py:61
-msgid "image"
 msgstr ""
 
 #: src/apps/news/models.py:13

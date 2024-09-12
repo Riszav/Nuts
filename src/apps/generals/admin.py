@@ -1,7 +1,7 @@
 from django.contrib import admin
 from unfold.admin import ModelAdmin
 from modeltranslation.admin import TabbedTranslationAdmin
-from .models import Contact, FAQ
+from .models import Contact, FAQ, WhatsAppNumber
 
 
 @admin.register(FAQ)
@@ -36,3 +36,8 @@ class ContactAdmin(ModelAdmin, TabbedTranslationAdmin):
         else:
             return True
 
+
+@admin.register(WhatsAppNumber)
+class WhatsAppAdmin(ModelAdmin):
+    list_display = ('number',)
+    list_display_links = ('number',)

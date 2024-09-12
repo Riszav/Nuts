@@ -104,6 +104,11 @@ UNFOLD = {
                         "icon": "contacts",
                         "link": reverse_lazy("admin:generals_contact_changelist"),
                     },
+                    {
+                        "title": _("Whats App"),
+                        "icon": "chat",
+                        "link": reverse_lazy("admin:generals_whatsappnumber_changelist"),
+                    },
                 ],
             },
             {

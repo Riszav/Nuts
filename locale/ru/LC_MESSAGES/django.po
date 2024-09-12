@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-12 18:33+0600\n"
+"POT-Creation-Date: 2024-09-13 00:59+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,24 +60,37 @@ msgstr "Вопросы"
 msgid "Contacts"
 msgstr "Контакты"
 
-#: config/settings/unfold.py:110 config/settings/unfold.py:115
+#: config/settings/unfold.py:108
+msgid "Whats App"
+msgstr ""
+
+#: config/settings/unfold.py:115 config/settings/unfold.py:120
 #: src/apps/news/apps.py:8
 msgid "News"
 msgstr "Новости"
 
-#: config/settings/unfold.py:122 config/settings/unfold.py:127
+#: config/settings/unfold.py:127 config/settings/unfold.py:132
+#: src/apps/about_us/apps.py:8
+msgid "About us"
+msgstr "О нас"
+
+#: config/settings/unfold.py:137
+msgid "Banner"
+msgstr "Баннер"
+
+#: config/settings/unfold.py:144 config/settings/unfold.py:149
 msgid "Users"
 msgstr "Пользователи"
 
-#: config/validations.py:11
+#: config/validations.py:12
 msgid "Invalid image. The image must be square."
 msgstr "Неправильное изображение. Изображение должно быть квадратным."
 
-#: config/validations.py:15
+#: config/validations.py:16
 msgid "The image must be square"
 msgstr "Изображение должно быть квадратным"
 
-#: config/validations.py:23
+#: config/validations.py:24
 msgid ""
 "Invalid image. The image must be horizontal (width must be greater than "
 "height)."
@@ -85,17 +98,62 @@ msgstr ""
 "Неправильное изображение. Изображение должно быть горизонтальным (ширина "
 "должна быть больше высоты)."
 
-#: config/validations.py:27
+#: config/validations.py:28
 msgid "The image must be horizontal"
 msgstr "Изображение должно быть горизонтальным"
 
-#: config/validations.py:35
+#: config/validations.py:36
 msgid "Invalid image format. Allowed format is \"PNG\"."
 msgstr "Неверный формат изображения. Разрешенный формат \"PNG\"."
 
-#: config/validations.py:39
+#: config/validations.py:40
 msgid "The image must be \"PNG\" format"
 msgstr "Изображение должно быть в \"PNG\" формате"
+
+#: config/validations.py:51
+#, python-brace-format
+msgid "Invalid video format. Allowed format: {allowed_formats}"
+msgstr "Неверный формат изображения. Разрешенный формат: {allowed_formats}"
+
+#: config/validations.py:55
+#, python-brace-format
+msgid "The video in format: {constant.correct_video_formats}"
+msgstr "Видео в формате: {constant.correct_video_formats}"
+
+#: src/apps/about_us/admin.py:17 src/apps/news/admin.py:27
+#: src/apps/nuts/admin.py:124 src/apps/nuts/admin.py:138
+msgid "Image"
+msgstr "Изображение"
+
+#: src/apps/about_us/models.py:9
+msgid "text"
+msgstr "текст"
+
+#: src/apps/about_us/models.py:10 src/apps/about_us/models.py:22
+#: src/apps/news/models.py:10 src/apps/news/models.py:33
+#: src/apps/nuts/models.py:24 src/apps/nuts/models.py:61
+msgid "image"
+msgstr "изображение"
+
+#: src/apps/about_us/models.py:16 src/apps/about_us/models.py:17
+msgid "about us"
+msgstr "о нас"
+
+#: src/apps/about_us/models.py:23
+msgid "video"
+msgstr "видео"
+
+#: src/apps/about_us/models.py:26 src/apps/about_us/models.py:27
+msgid "banner"
+msgstr "баннер"
+
+#: src/apps/about_us/models.py:35
+msgid "Either image or video must be provided."
+msgstr "Необходимо заполнить изображение или видео."
+
+#: src/apps/about_us/models.py:37
+msgid "You cannot fill in both fields."
+msgstr "Вы не можете заполнить оба поля"
 
 #: src/apps/generals/models.py:19 src/apps/generals/models.py:28
 msgid "question"
@@ -159,11 +217,6 @@ msgstr "контакт"
 msgid "contacts"
 msgstr "контакты"
 
-#: src/apps/news/admin.py:27 src/apps/nuts/admin.py:124
-#: src/apps/nuts/admin.py:138
-msgid "Image"
-msgstr "Изображение"
-
 #: src/apps/news/models.py:8
 msgid "title"
 msgstr "заголовок"
@@ -172,11 +225,6 @@ msgstr "заголовок"
 #: src/apps/nuts/models.py:60
 msgid "description"
 msgstr "описание"
-
-#: src/apps/news/models.py:10 src/apps/news/models.py:33
-#: src/apps/nuts/models.py:24 src/apps/nuts/models.py:61
-msgid "image"
-msgstr "изображение"
 
 #: src/apps/news/models.py:13
 msgid "date"
@@ -256,38 +304,41 @@ msgstr "рецепт"
 msgid "recipes"
 msgstr "рецепты"
 
-msgid "Select value"
-msgstr "Выберите значение"
+#~ msgid "Select value"
+#~ msgstr "Выберите значение"
 
-msgid "Select action"
-msgstr "Выберите действие"
+#~ msgid "Select action"
+#~ msgstr "Выберите действие"
 
-msgid "Welcome back to"
-msgstr "Добро пожаловать в"
+#~ msgid "Welcome back to"
+#~ msgstr "Добро пожаловать в"
 
-msgid "Return to site"
-msgstr "Вернуться к сайту"
+#~ msgid "Return to site"
+#~ msgstr "Вернуться к сайту"
 
-msgid "Type to search"
-msgstr "Напишите для поиска"
+#~ msgid "Type to search"
+#~ msgstr "Напишите для поиска"
 
-msgid "You have been successfully logged out from the administration"
-msgstr "Вы успешно вышли из администрирования"
+#~ msgid "You have been successfully logged out from the administration"
+#~ msgstr "Вы успешно вышли из администрирования"
 
-msgid "All applications"
-msgstr "Все приложения"
+#~ msgid "All applications"
+#~ msgstr "Все приложения"
 
-msgid "Search apps and models..."
-msgstr "Поиск моделей и приложений..."
+#~ msgid "Search apps and models..."
+#~ msgstr "Поиск моделей и приложений..."
 
-msgid "General"
-msgstr "Общие"
+#~ msgid "Please correct the errors below."
+#~ msgstr "Пожалуйста, исправьте ошибки ниже"
 
-msgid "Dark"
-msgstr "Темная"
+#~ msgid "General"
+#~ msgstr "Общие"
 
-msgid "Light"
-msgstr "Светлая"
+#~ msgid "Dark"
+#~ msgstr "Темная"
 
-msgid "System"
-msgstr "Системная"
+#~ msgid "Light"
+#~ msgstr "Светлая"
+
+#~ msgid "System"
+#~ msgstr "Системная"
