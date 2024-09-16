@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Product, Category, Price, Recipe
 from decouple import config
 from .utils import ProductWhatsAppLinkGenerator
+from . import services
 
 
 class PriceSerializer(serializers.ModelSerializer):
@@ -25,11 +26,12 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'image', 'hit_of_sales', 'prices']
 
 
-class ProductHitSerializer(serializers.ModelSerializer):
+class ProductHitSerializer(serializers.ModelSerializer, services.ProductServices):
+    images = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
-        fields = ['id', 'name', 'image', 'hit_of_sales',]
+        fields = ['id', 'name', 'images', 'hit_of_sales',]
 
 
 class CategorySerializer(serializers.ModelSerializer):

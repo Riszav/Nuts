@@ -1,4 +1,4 @@
-class NewsServices:
+class ProductServices:
     """Сервис для работы с изображениями"""
 
     @staticmethod
@@ -9,7 +9,7 @@ class NewsServices:
         if obj.image:
             images.append(obj.image.url)
 
-        related_images = obj.news_images.all()
+        related_images = obj.catalog_images.all()
         for img in related_images:
             images.append(img.image.url)
 

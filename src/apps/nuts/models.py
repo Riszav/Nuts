@@ -41,6 +41,21 @@ class Product(models.Model):
         super().save(*args, **kwargs)
 
 
+class ProductImages(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='catalog_images', verbose_name=_('product'))
+    image = models.ImageField(_("image"),
+                              upload_to='product_gallery',
+                              **validations.horizontal_image_validator)
+    
+    def __str__(self) -> str:
+        return f'{self.pk}'
+    
+    class Meta:
+        verbose_name = _('product image')
+        verbose_name_plural = _('product images')
+        db_table = 'product_images'
+
+
 class Price(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='prices', verbose_name=_("product"))
     volume = models.CharField(max_length=25, verbose_name=_("volume"))

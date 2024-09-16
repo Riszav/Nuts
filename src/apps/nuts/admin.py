@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, Recipe, Price
+from .models import Category, Product, Recipe, Price, ProductImages
 from modeltranslation.admin import TabbedTranslationAdmin, TranslationStackedInline
 from unfold.admin import ModelAdmin, StackedInline
 from django.utils.safestring import mark_safe
@@ -100,6 +100,13 @@ class CategoryAdmin(ModelAdmin, TabbedTranslationAdmin):
             return True
 
 
+class ProductImagesInline(StackedInline):
+    model = ProductImages
+    fields = ['product', 'image']
+    extra = 1
+    max_num = 10
+
+
 class ProductPriceInline(StackedInline, TranslationStackedInline):
     model = Price
     fields = ['volume', 'price']
@@ -114,7 +121,7 @@ class ProductPriceInline(StackedInline, TranslationStackedInline):
 class ProductAdmin(ModelAdmin, TabbedTranslationAdmin):
     list_display = ['id', 'hit_of_sales', 'name', 'product_image', 'category']
     list_display_links = ['id', 'hit_of_sales', 'name', 'product_image', 'category']
-    inlines = (ProductPriceInline,)
+    inlines = (ProductPriceInline,  ProductImagesInline,)
     autocomplete_fields = ("category", )
     search_fields = ('name_ru', 'name_en')
 

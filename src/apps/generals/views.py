@@ -55,6 +55,3 @@ class WhatsAppNumberAPIView(APIView):
             serializer = self.serializer_class(default_number).data
         return Response(serializer, 200)
     
-    # def get(self):
-    #     queryset = self.queryset.first()
-    #     serializer = self.serializer_class()
