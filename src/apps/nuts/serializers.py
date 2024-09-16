@@ -41,7 +41,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
     def get_catalogs(self, obj):
         catalogs = obj.catalogs.all()[:8]
-        return ProductSerializer(catalogs, many=True).data
+        return ProductSerializer(catalogs, many=True, context=self.context).data
 
 
 class CategoryNameSerializer(serializers.ModelSerializer):

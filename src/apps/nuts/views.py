@@ -9,6 +9,8 @@ from rest_framework import filters
 from rest_framework.response import Response
 from config.pagination import CustomPageNumberPagination
 from decouple import config
+from django.db.models import Prefetch
+from rest_framework.permissions import AllowAny
 
 
 @extend_schema(tags=["ПОИСК"])
@@ -32,6 +34,13 @@ class ProductSearchListAPIView(ListAPIView):
     search_fields = ['name_ru', 'name_en']
 
 
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        admin_number = WhatsAppNumber.objects.first()
+        context['admin_number'] = admin_number.number if admin_number else config('DEFAULT_WHATSAPP_NUMBER')
+        return context
+
+
 @extend_schema(tags=["ТОПОВЫЕ ПРОДУКТЫ"])
 @extend_schema_view(
     get=extend_schema(
@@ -50,11 +59,12 @@ class ProductHitListAPIView(ListAPIView):
     )
 )
 class CategoryListAPIView(ListAPIView):
-    queryset = Category.objects.all()
+    queryset = Category.objects.prefetch_related(Prefetch('catalogs', queryset=Product.objects.prefetch_related('prices'))).all()
     serializer_class = CategorySerializer
+    permission_classes = [AllowAny,]
     pagination_class = None
 
-def get_serializer_context(self):
+    def get_serializer_context(self):
         context = super().get_serializer_context()
         admin_number = WhatsAppNumber.objects.first()
         context['admin_number'] = admin_number.number if admin_number else config('DEFAULT_WHATSAPP_NUMBER')
@@ -79,7 +89,7 @@ class CategoryNameListAPIView(ListAPIView):
     )
 )
 class CategoryDetailAPIView(ListAPIView):
-    queryset = Product.objects.all().order_by('id')
+    queryset = Product.objects.prefetch_related('prices').all().order_by('id')
     serializer_class = ProductSerializer
     pagination_class = CustomPageNumberPagination
     lookup_field = 'pk'
