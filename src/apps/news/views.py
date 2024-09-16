@@ -12,7 +12,7 @@ from drf_spectacular.utils import extend_schema, extend_schema_view
     )
 )
 class NewsListApiView(ListAPIView):
-    queryset = News.objects.all()
+    queryset = News.objects.all().order_by('-id')
     serializer_class = NewsSerializer
 
 

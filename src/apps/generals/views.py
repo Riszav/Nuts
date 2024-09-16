@@ -15,7 +15,7 @@ from decouple import config
     )
 )
 class FAQListAPIView(ListAPIView):
-    queryset = FAQ.objects.all()
+    queryset = FAQ.objects.all().order_by('id')
     serializer_class = FAQSerializer
 
 

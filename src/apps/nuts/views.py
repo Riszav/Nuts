@@ -28,7 +28,7 @@ from rest_framework.permissions import AllowAny
     )
 )
 class ProductSearchListAPIView(ListAPIView):
-    queryset = Product.objects.all()
+    queryset = Product.objects.all().order_by('id')
     serializer_class = ProductSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['name_ru', 'name_en']
@@ -48,7 +48,7 @@ class ProductSearchListAPIView(ListAPIView):
     )
 )
 class ProductHitListAPIView(ListAPIView):
-    queryset = Product.objects.filter(hit_of_sales=True)
+    queryset = Product.objects.filter(hit_of_sales=True).order_by('id')
     serializer_class = ProductHitSerializer
 
 
@@ -59,7 +59,7 @@ class ProductHitListAPIView(ListAPIView):
     )
 )
 class CategoryListAPIView(ListAPIView):
-    queryset = Category.objects.prefetch_related(Prefetch('catalogs', queryset=Product.objects.prefetch_related('prices'))).all()
+    queryset = Category.objects.prefetch_related(Prefetch('catalogs', queryset=Product.objects.prefetch_related('prices'))).all().order_by('id')
     serializer_class = CategorySerializer
     permission_classes = [AllowAny,]
     pagination_class = None
@@ -77,7 +77,7 @@ class CategoryListAPIView(ListAPIView):
     )
 )
 class CategoryNameListAPIView(ListAPIView):
-    queryset = Category.objects.all()
+    queryset = Category.objects.all().order_by('id')
     serializer_class = CategoryNameSerializer
     pagination_class = None
 
@@ -124,6 +124,6 @@ class CategoryDetailAPIView(ListAPIView):
     )
 )
 class RecipeListAPIView(ListAPIView):
-    queryset = Recipe.objects.all()
+    queryset = Recipe.objects.all().order_by('id')
     serializer_class = RecipeSerializer
     pagination_class = None
