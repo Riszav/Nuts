@@ -1,15 +1,15 @@
-class NewsServices:
-    """Сервис для работы с изображениями новостей"""
+class ManyImagesServices:
+    """Сервис для работы с изображениями"""
 
     @staticmethod
-    def get_images(obj, request):
+    def get_images_list(obj, request, images_list):
         """Получить список изображений из основной и связанной модели"""
         images = []
 
         if obj.image:
-            images.append(obj.image.url)
+            images.append(request.build_absolute_uri(obj.image.url))
 
-        related_images = obj.news_images.all()
+        related_images = images_list.all()
         for img in related_images:
             images.append(request.build_absolute_uri(img.image.url))
 
