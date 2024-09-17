@@ -8,7 +8,7 @@ class News(models.Model):
     title = models.CharField(_("title"), max_length=50)
     description = models.TextField(_("description"))
     image = models.ImageField(_("image"),
-                              upload_to='news_images',
+                              upload_to='news_images/',
                               **validations.horizontal_image_validator)
     date = models.DateField(_("date"), auto_now_add=True)
 
@@ -31,7 +31,7 @@ class News(models.Model):
 class NewsImages(models.Model):
     news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='news_images', verbose_name=_('news'))
     image = models.ImageField(_("image"),
-                              upload_to='news_gallery',
+                              upload_to='news_gallery/',
                               **validations.horizontal_image_validator)
     
     def __str__(self) -> str:
@@ -41,3 +41,8 @@ class NewsImages(models.Model):
         verbose_name = _('news image')
         verbose_name_plural = _('news images')
         db_table = 'news_images'
+
+    def save(self, *args, **kwargs):
+        new_image = compress(self.image)
+        self.image = new_image
+        super().save(*args, **kwargs)

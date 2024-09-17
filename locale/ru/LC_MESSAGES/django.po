@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-13 00:59+0600\n"
+"POT-Creation-Date: 2024-09-17 17:32+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,7 +121,7 @@ msgid "The video in format: {constant.correct_video_formats}"
 msgstr "Видео в формате: {constant.correct_video_formats}"
 
 #: src/apps/about_us/admin.py:17 src/apps/news/admin.py:27
-#: src/apps/nuts/admin.py:124 src/apps/nuts/admin.py:138
+#: src/apps/nuts/admin.py:131 src/apps/nuts/admin.py:145
 msgid "Image"
 msgstr "Изображение"
 
@@ -131,7 +131,8 @@ msgstr "текст"
 
 #: src/apps/about_us/models.py:10 src/apps/about_us/models.py:22
 #: src/apps/news/models.py:10 src/apps/news/models.py:33
-#: src/apps/nuts/models.py:24 src/apps/nuts/models.py:61
+#: src/apps/nuts/models.py:24 src/apps/nuts/models.py:46
+#: src/apps/nuts/models.py:81
 msgid "image"
 msgstr "изображение"
 
@@ -198,22 +199,30 @@ msgid "instagram"
 msgstr ""
 
 #: src/apps/generals/models.py:51
-msgid "facebook"
-msgstr ""
-
-#: src/apps/generals/models.py:52
-msgid "telegram"
-msgstr ""
-
-#: src/apps/generals/models.py:53
 msgid "whatsapp"
 msgstr ""
 
-#: src/apps/generals/models.py:59
+#: src/apps/generals/models.py:52
+msgid "facebook"
+msgstr ""
+
+#: src/apps/generals/models.py:53
+msgid "telegram"
+msgstr ""
+
+#: src/apps/generals/models.py:54
+msgid "wildberries"
+msgstr ""
+
+#: src/apps/generals/models.py:55
+msgid "ozon"
+msgstr ""
+
+#: src/apps/generals/models.py:61
 msgid "contact"
 msgstr "контакт"
 
-#: src/apps/generals/models.py:60
+#: src/apps/generals/models.py:62
 msgid "contacts"
 msgstr "контакты"
 
@@ -222,7 +231,7 @@ msgid "title"
 msgstr "заголовок"
 
 #: src/apps/news/models.py:9 src/apps/nuts/models.py:21
-#: src/apps/nuts/models.py:60
+#: src/apps/nuts/models.py:80
 msgid "description"
 msgstr "описание"
 
@@ -272,7 +281,7 @@ msgid "hit of sales"
 msgstr "хит продаж"
 
 #: src/apps/nuts/models.py:34 src/apps/nuts/models.py:45
-#: src/apps/nuts/models.py:59
+#: src/apps/nuts/models.py:65 src/apps/nuts/models.py:79
 msgid "product"
 msgstr "продукт"
 
@@ -280,29 +289,44 @@ msgstr "продукт"
 msgid "products"
 msgstr "продукты"
 
-#: src/apps/nuts/models.py:46
+#: src/apps/nuts/models.py:54
+msgid "product image"
+msgstr "изображение продукта"
+
+#: src/apps/nuts/models.py:55
+msgid "product images"
+msgstr "изображения продукта"
+
+#: src/apps/nuts/models.py:66
 msgid "volume"
 msgstr "объем"
 
-#: src/apps/nuts/models.py:53
+#: src/apps/nuts/models.py:73
 msgid "price"
 msgstr "цена"
 
-#: src/apps/nuts/models.py:54
+#: src/apps/nuts/models.py:74
 msgid "prices"
 msgstr "цены"
 
-#: src/apps/nuts/models.py:64
+#: src/apps/nuts/models.py:84
 msgid "link"
 msgstr "ссылка"
 
-#: src/apps/nuts/models.py:73
+#: src/apps/nuts/models.py:93
 msgid "recipe"
 msgstr "рецепт"
 
-#: src/apps/nuts/models.py:74
+#: src/apps/nuts/models.py:94
 msgid "recipes"
 msgstr "рецепты"
+
+#: src/apps/nuts/utils.py:10
+#, python-brace-format
+msgid ""
+"Hello, I want to order {obj.product.name}. Price: {obj.price}. Volume: {obj."
+"volume}"
+msgstr "Здравствуйте, я хочу заказать {obj.product.name}. Цена: {obj.price}. Объем: {obj.volume}"
 
 msgid "Select value"
 msgstr "Выберите значение"

@@ -48,9 +48,11 @@ class Contact(models.Model):
     email = models.EmailField(_("email"))
     address = models.CharField(_("address"), max_length=200)
     instagram = models.URLField(_("instagram"))
-    facebook = models.URLField(_("facebook"))
-    telegram = models.URLField(_("telegram"))
     whatsapp = models.URLField(_("whatsapp"))
+    facebook = models.URLField(_("facebook"), blank=True)
+    telegram = models.URLField(_("telegram"), blank=True)
+    wildberries = models.URLField(_("wildberries"), blank=True)
+    ozon = models.URLField(_("ozon"), blank=True)
     # social_networks = models.ManyToManyField('SocialNetwork', verbose_name=_("social networks"))
 
     fields_to_translate = ['address']

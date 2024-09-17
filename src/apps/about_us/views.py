@@ -19,6 +19,10 @@ class AboutUsAPIView(RetrieveAPIView):
     def get(self, request, *args, **kwargs):
         queryset = self.queryset.first()
         serializer = self.serializer_class(queryset).data
+
+        if 'image' in serializer:
+            serializer['image'] = request.build_absolute_uri(serializer['image'])
+
         return Response(serializer, 200)
 
 
@@ -35,4 +39,8 @@ class BannerAPIView(RetrieveAPIView):
     def get(self, request, *args, **kwargs):
         queryset = self.queryset.first()
         serializer = self.serializer_class(queryset).data
+
+        if 'image' in serializer:
+            serializer['image'] = request.build_absolute_uri(serializer['image'])
+
         return Response(serializer, 200)

@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 
 class AboutUs(models.Model):
     text = models.TextField(_('text'), max_length=600)
-    image = models.ImageField(_('image'), upload_to='about_us_images', **validations.horizontal_image_validator)
+    image = models.ImageField(_('image'), upload_to='about_us_images/', **validations.horizontal_image_validator)
 
     def __str__(self) -> str:
         return self.text
@@ -19,8 +19,8 @@ class AboutUs(models.Model):
 
 
 class Banner(models.Model):
-    image = models.ImageField(_('image'), upload_to='banner', blank=True, **validations.horizontal_image_validator)
-    video = models.FileField(_('video'), upload_to='banner', blank=True, **validations.video_validator)
+    image = models.ImageField(_('image'), upload_to='banner/', blank=True, **validations.horizontal_image_validator)
+    video = models.FileField(_('video'), upload_to='banner/', blank=True, **validations.video_validator)
     
     class Meta:
         verbose_name = _('banner')

@@ -22,7 +22,7 @@ class Product(models.Model):
     hit_of_sales = models.BooleanField(default=False, verbose_name=_("hit of sales"))
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='catalogs', verbose_name=_("category"))
     image = models.ImageField(verbose_name=_("image"),
-                              upload_to='catalog_images',
+                              upload_to='catalog_images/',
                               **validations.square_image_validator)
 
     fields_to_translate = ['name']
@@ -44,7 +44,7 @@ class Product(models.Model):
 class ProductImages(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='catalog_images', verbose_name=_('product'))
     image = models.ImageField(_("image"),
-                              upload_to='product_gallery',
+                              upload_to='product_gallery/',
                               **validations.horizontal_image_validator)
     
     def __str__(self) -> str:
@@ -54,6 +54,11 @@ class ProductImages(models.Model):
         verbose_name = _('product image')
         verbose_name_plural = _('product images')
         db_table = 'product_images'
+
+    def save(self, *args, **kwargs):
+        new_image = compress(self.image)
+        self.image = new_image
+        super().save(*args, **kwargs)
 
 
 class Price(models.Model):
@@ -74,7 +79,7 @@ class Recipe(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='recipes', verbose_name=_("product"))
     description = models.TextField(_("description"), blank=True)
     image = models.ImageField(_("image"),
-                              upload_to='recipe_images',
+                              upload_to='recipe_images/',
                               **validations.png_image_validator)
     link = models.URLField(_("link"))
 

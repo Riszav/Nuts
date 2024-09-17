@@ -3,6 +3,7 @@ from .models import Product, Category, Price, Recipe
 from decouple import config
 from .utils import ProductWhatsAppLinkGenerator
 from config import services
+from config.settings.base import MODELTRANSLATION_LANGUAGES
 
 
 class PriceSerializer(serializers.ModelSerializer):
@@ -13,8 +14,11 @@ class PriceSerializer(serializers.ModelSerializer):
         fields = ['id', 'volume', 'price', 'order_link']
 
     def get_order_link(self, obj):
+        request = self.context.get('request')
+        accept_language = request.META.get('HTTP_ACCEPT_LANGUAGE', None)
+        language = accept_language if accept_language in MODELTRANSLATION_LANGUAGES else 'ru'
         admin_number = self.context.get('admin_number', config('DEFAULT_WHATSAPP_NUMBER'))
-        return ProductWhatsAppLinkGenerator.generate_whatsapp_link(obj, admin_number)
+        return ProductWhatsAppLinkGenerator.generate_whatsapp_link(obj, admin_number, language)
 
 
 class ProductSerializer(serializers.ModelSerializer):
