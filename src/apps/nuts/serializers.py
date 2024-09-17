@@ -1,9 +1,11 @@
 from rest_framework import serializers
 from .models import Product, Category, Price, Recipe
 from decouple import config
-from .utils import ProductWhatsAppLinkGenerator
 from config import services
+from urllib.parse import urlencode
 from config.settings.base import MODELTRANSLATION_LANGUAGES
+from django.utils.translation import activate, gettext as _
+
 
 
 class PriceSerializer(serializers.ModelSerializer):
@@ -14,11 +16,11 @@ class PriceSerializer(serializers.ModelSerializer):
         fields = ['id', 'volume', 'price', 'order_link']
 
     def get_order_link(self, obj):
-        request = self.context.get('request')
-        accept_language = request.META.get('HTTP_ACCEPT_LANGUAGE', None)
-        language = accept_language if accept_language in MODELTRANSLATION_LANGUAGES else 'ru'
-        admin_number = self.context.get('admin_number', config('DEFAULT_WHATSAPP_NUMBER'))
-        return ProductWhatsAppLinkGenerator.generate_whatsapp_link(obj, admin_number, language)
+        base_url = "https://api.whatsapp.com/send"
+        number = self.context.get('admin_number', config('DEFAULT_WHATSAPP_NUMBER'))
+        message = _(f"Hello, I want to order ") + f"\"{obj.product.name}\". " + _("Price: ") + f"{obj.price}. " + _("Volume: ") + f"{obj.volume}"
+        params = {'phone': number, 'text': message}
+        return f"{base_url}?{urlencode(params)}"
 
 
 class ProductSerializer(serializers.ModelSerializer):

@@ -20,7 +20,7 @@ class AboutUsAPIView(RetrieveAPIView):
         queryset = self.queryset.first()
         serializer = self.serializer_class(queryset).data
 
-        if 'image' in serializer:
+        if serializer['image']:
             serializer['image'] = request.build_absolute_uri(serializer['image'])
 
         return Response(serializer, 200)
@@ -40,7 +40,10 @@ class BannerAPIView(RetrieveAPIView):
         queryset = self.queryset.first()
         serializer = self.serializer_class(queryset).data
 
-        if 'image' in serializer:
+        if serializer['image']:
             serializer['image'] = request.build_absolute_uri(serializer['image'])
+        
+        if serializer['video']:
+            serializer['video'] = request.build_absolute_uri(serializer['video'])
 
         return Response(serializer, 200)

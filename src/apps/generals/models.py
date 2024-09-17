@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from config import validations
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 # Create your models here.
@@ -17,7 +17,7 @@ from config import validations
 
 class FAQ(models.Model):
     question = models.CharField(_("question"), max_length=200)
-    answer = models.TextField(_("answer"))
+    answer = CKEditor5Field(_("answer"))
 
     fields_to_translate = ['question', 'answer']
 

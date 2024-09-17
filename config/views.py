@@ -10,7 +10,7 @@ def translate_text(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         text_to_translate = data.get('text_to_translate', '')
-        target_languages = data.get('target_language', ['en'])
+        target_languages = data.get('target_language', ['ru'])
 
         if text_to_translate:
             translator = Translator()
@@ -20,4 +20,4 @@ def translate_text(request):
         else:
             return JsonResponse({'error': 'No text to translate'})
 
-    return JsonResponse({'error': 'Invalid request method'})
+    return JsonResponse({'error': 'Invalid request method'}, status=400)

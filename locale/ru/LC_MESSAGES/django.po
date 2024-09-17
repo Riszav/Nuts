@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-17 17:32+0600\n"
+"POT-Creation-Date: 2024-09-18 02:31+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -125,34 +125,34 @@ msgstr "Видео в формате: {constant.correct_video_formats}"
 msgid "Image"
 msgstr "Изображение"
 
-#: src/apps/about_us/models.py:9
+#: src/apps/about_us/models.py:10
 msgid "text"
 msgstr "текст"
 
-#: src/apps/about_us/models.py:10 src/apps/about_us/models.py:22
+#: src/apps/about_us/models.py:11 src/apps/about_us/models.py:23
 #: src/apps/news/models.py:10 src/apps/news/models.py:33
 #: src/apps/nuts/models.py:24 src/apps/nuts/models.py:46
 #: src/apps/nuts/models.py:81
 msgid "image"
 msgstr "изображение"
 
-#: src/apps/about_us/models.py:16 src/apps/about_us/models.py:17
+#: src/apps/about_us/models.py:17 src/apps/about_us/models.py:18
 msgid "about us"
 msgstr "о нас"
 
-#: src/apps/about_us/models.py:23
+#: src/apps/about_us/models.py:24
 msgid "video"
 msgstr "видео"
 
-#: src/apps/about_us/models.py:26 src/apps/about_us/models.py:27
+#: src/apps/about_us/models.py:27 src/apps/about_us/models.py:28
 msgid "banner"
 msgstr "баннер"
 
-#: src/apps/about_us/models.py:35
+#: src/apps/about_us/models.py:36
 msgid "Either image or video must be provided."
 msgstr "Необходимо заполнить изображение или видео."
 
-#: src/apps/about_us/models.py:37
+#: src/apps/about_us/models.py:38
 msgid "You cannot fill in both fields."
 msgstr "Вы не можете заполнить оба поля"
 
@@ -321,12 +321,17 @@ msgstr "рецепт"
 msgid "recipes"
 msgstr "рецепты"
 
-#: src/apps/nuts/utils.py:10
-#, python-brace-format
-msgid ""
-"Hello, I want to order {obj.product.name}. Price: {obj.price}. Volume: {obj."
-"volume}"
-msgstr "Здравствуйте, я хочу заказать {obj.product.name}. Цена: {obj.price}. Объем: {obj.volume}"
+#: src/apps/nuts/serializers.py:27
+msgid "Hello, I want to order "
+msgstr "Здравствуйте, я хочу заказать "
+
+#: src/apps/nuts/serializers.py:27
+msgid "Price: "
+msgstr "Цена: "
+
+#: src/apps/nuts/serializers.py:27
+msgid "Volume: "
+msgstr "Объем: "
 
 msgid "Select value"
 msgstr "Выберите значение"

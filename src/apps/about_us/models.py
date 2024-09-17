@@ -3,10 +3,11 @@ from django.utils.translation import gettext_lazy as _
 from config import validations
 from django.db.models import UniqueConstraint
 from django.core.exceptions import ValidationError
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 class AboutUs(models.Model):
-    text = models.TextField(_('text'), max_length=600)
+    text = CKEditor5Field(_('text'), max_length=600)
     image = models.ImageField(_('image'), upload_to='about_us_images/', **validations.horizontal_image_validator)
 
     def __str__(self) -> str:
