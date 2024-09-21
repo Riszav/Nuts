@@ -13,7 +13,7 @@ class FAQSerializer(serializers.ModelSerializer):
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
-        fields = ['phone1', 'phone2', 'email', 'address', 'instagram', 'facebook', 'telegram', 'whatsapp']
+        fields = ['phone1', 'phone2', 'email', 'address', 'instagram', 'facebook', 'telegram', 'whatsapp', 'wildberries', 'ozon']
 
 class WhatsAppNumberSerializer(serializers.ModelSerializer):
     contact_link = serializers.SerializerMethodField()

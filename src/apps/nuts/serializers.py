@@ -18,8 +18,8 @@ class PriceSerializer(serializers.ModelSerializer):
     def get_order_link(self, obj):
         base_url = "https://api.whatsapp.com/send"
         number = self.context.get('admin_number', config('DEFAULT_WHATSAPP_NUMBER'))
-        message = _(f"Hello, I want to order ") + f"\"{obj.product.name}\". " + _("Price: ") + f"{obj.price}. " + _("Volume: ") + f"{obj.volume}"
-        params = {'phone': number, 'text': message}
+#        message = _(f"Hello, I want to order ") + f"\"{obj.product.name}\". " + _("Price: ") + f"{obj.price}. " + _("Volume: ") + f"{obj.volume}"
+        params = {'phone': number}
         return f"{base_url}?{urlencode(params)}"
 
 
