@@ -26,12 +26,12 @@ from django.conf import settings
 
 urlpatterns = [
     # path('i18n/', include('django.conf.urls.i18n')),  # Добавьте этот путь
-    path('admin/', admin.site.urls),
-    path('schema/', SpectacularAPIView.as_view(), name='schema'),
-    path('swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-    path('redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    path('api/admin/', admin.site.urls),
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 
-    path('translate/', translate_text, name='translate'),
+    path('api/translate/', translate_text, name='translate'),
 
     path('api/v1/', include('src.apps.nuts.urls')),
     path('api/v1/', include('src.apps.news.urls')),

@@ -14,4 +14,3 @@ RUN pip install --upgrade pip
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-RUN python3 manage.py collectstatic --noinput
