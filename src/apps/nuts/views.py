@@ -127,3 +127,15 @@ class RecipeListAPIView(ListAPIView):
     queryset = Recipe.objects.all().order_by('id')
     serializer_class = RecipeSerializer
     pagination_class = None
+
+    
+@extend_schema(tags=["РЕЦЕПТЫ"])
+@extend_schema_view(
+    get=extend_schema(
+        summary='ПОЛУЧЕНИЕ ДЕТАЛЬНЫХ РЕЦЕПТОВ'
+    )
+)
+class RecipeDetailAPIView(RetrieveAPIView):
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeDetailSerializer
+    lookup_field = 'pk'

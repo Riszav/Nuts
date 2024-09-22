@@ -10,4 +10,5 @@ urlpatterns = [
     path('hit_products/', views.ProductHitListAPIView.as_view(), name='product-list'),
     path('search_product/', views.ProductSearchListAPIView.as_view(), name='search-products'),
     path('recipe/', views.RecipeListAPIView.as_view(), name='recipe_list'),
+    path('recipe/<int:pk>/', views.RecipeDetailAPIView.as_view(), name='recipe-retrieve'),
  ]

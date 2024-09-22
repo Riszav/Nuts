@@ -2,10 +2,11 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from config.utils import compress
 from config import validations
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 class Category(models.Model):
-    name = models.CharField(_("name"), max_length=20)
+    name = models.CharField(_("name"), max_length=50)
 
     def __str__(self) -> str:
         return f'{self.name_ru} - {self.name_en}'
@@ -17,8 +18,8 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    name = models.CharField(_("name"), max_length=100)
-    description = models.TextField(_("description"), blank=True)
+    name = models.CharField(_("name"), max_length=50)
+    description = models.TextField(_("description"), blank=True, max_length=400)
     hit_of_sales = models.BooleanField(default=False, verbose_name=_("hit of sales"))
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='catalogs', verbose_name=_("category"))
     image = models.ImageField(verbose_name=_("image"),
@@ -63,7 +64,7 @@ class ProductImages(models.Model):
 
 class Price(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='prices', verbose_name=_("product"))
-    volume = models.CharField(max_length=25, verbose_name=_("volume"))
+    volume = models.CharField(max_length=10, verbose_name=_("volume"))
     price = models.DecimalField(max_digits=8, decimal_places=0)
 
     def __str__(self) -> str:
@@ -77,7 +78,7 @@ class Price(models.Model):
 
 class Recipe(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='recipes', verbose_name=_("product"))
-    description = models.TextField(_("description"), blank=True)
+    description = CKEditor5Field(_("description"))
     image = models.ImageField(_("image"),
                               upload_to='recipe_images/',
                               **validations.png_image_validator)

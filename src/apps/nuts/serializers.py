@@ -65,4 +65,10 @@ class CategoryNameSerializer(serializers.ModelSerializer):
 class RecipeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recipe
+        fields = ['id', 'product_title', 'description', 'image']
+
+        
+class RecipeDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Recipe
         fields = ['id', 'product_title', 'description', 'image', 'link']

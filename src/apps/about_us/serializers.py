@@ -11,4 +11,4 @@ class AboutUsSerializer(serializers.ModelSerializer):
 class BannerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Banner
-        fields = ['image', 'video']
+        fields = ['image', 'video', 'mobi_image']
