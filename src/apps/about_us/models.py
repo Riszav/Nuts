@@ -22,6 +22,7 @@ class AboutUs(models.Model):
 class Banner(models.Model):
     image = models.ImageField(_('image'), upload_to='banner/', blank=True, **validations.horizontal_image_validator)
     video = models.FileField(_('video'), upload_to='banner/', blank=True, **validations.video_validator)
+    mobi_image = models.ImageField(_('mobile image'), upload_to='banner/', **validations.square_image_validator)
     
     class Meta:
         verbose_name = _('banner')
