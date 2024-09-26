@@ -82,6 +82,9 @@ class Recipe(models.Model):
     image = models.ImageField(_("image"),
                               upload_to='recipe_images/',
                               **validations.png_image_validator)
+    detail_image = models.ImageField(_("image"),
+                              upload_to='recipe_images/',
+                              **validations.horizontal_image_validator)
     link = models.URLField(_("link"))
 
     fields_to_translate = ['description']
