@@ -1,0 +1,16 @@
+FROM node:18
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+RUN npm update
+
+COPY . .
+
+RUN npm run build    
+
+RUN mkdir -p /dist_volume && cp -r dist/* /dist_volume
+
+CMD ["npm", "run", "dev"]
