@@ -1,0 +1,72 @@
+  version: '3'
+  services:
+    backend:
+      container_name: backend
+      build:
+        context: ./backend
+      env_file:
+        - .env
+      volumes:
+        - .:/app
+        - nuts_static:/usr/src/app/back_static
+        - nuts_media:/usr/src/app/back_media
+      restart: always
+      depends_on:
+        - pgdb
+      command: sh -c "python manage.py makemigrations &&
+                      python manage.py migrate &&
+                      python manage.py collectstatic --noinput &&
+                      gunicorn config.wsgi:application --bind 0.0.0.0:8000"
+      ports:
+        - "8000:8000"
+
+
+    frontend:
+      build: ./frontend
+      env_file:
+        - .env
+      container_name: frontend
+      volumes:
+        - dist_volume:/dist_volume
+
+
+
+    pgdb:
+      image: postgres:latest
+      container_name: postgres
+      restart: always
+      env_file:
+        - .env
+      environment:
+        POSTGRES_DB: ${SQL_DATABASE}
+        POSTGRES_USER: ${SQL_USER}
+        POSTGRES_PASSWORD: ${SQL_PASSWORD}
+      depends_on:
+        - frontend
+      ports:
+        - "5432:5432"
+      volumes:
+        - nuts_db:/var/lib/postgresql/data/
+
+    nginx:
+      container_name: nginx
+      image: nginx
+      ports:
+        - "80:80"
+        - "443:443"
+      volumes:
+        - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+        - nuts_static:/usr/src/app/back_static
+        - nuts_media:/usr/src/app/back_media
+        - /etc/letsencrypt:/etc/letsencrypt
+        - dist_volume:/usr/src/app/dist
+      depends_on:
+        - backend
+        - frontend
+
+
+  volumes:
+    nuts_static:
+    nuts_media:
+    nuts_db:
+    dist_volume:

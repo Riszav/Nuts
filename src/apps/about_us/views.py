@@ -46,4 +46,7 @@ class BannerAPIView(RetrieveAPIView):
         if serializer['video']:
             serializer['video'] = request.build_absolute_uri(serializer['video'])
 
+        if serializer['mobi_image']:
+            serializer['mobi_image'] = request.build_absolute_uri(serializer['mobi_image'])
+
         return Response(serializer, 200)
