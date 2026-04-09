@@ -67,8 +67,8 @@ class RecipeSerializer(serializers.ModelSerializer):
         model = Recipe
         fields = ['id', 'product_title', 'description', 'image']
 
-        
+
 class RecipeDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recipe
-        fields = ['id', 'product_title', 'description', 'image', 'link']
+        fields = ['id', 'product_title', 'description', 'detail_image', 'link']

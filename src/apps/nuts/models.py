@@ -79,9 +79,12 @@ class Price(models.Model):
 class Recipe(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='recipes', verbose_name=_("product"))
     description = CKEditor5Field(_("description"))
-    image = models.ImageField(_("image"),
+    image = models.ImageField(_("carousel image"),
                               upload_to='recipe_images/',
                               **validations.png_image_validator)
+    detail_image = models.ImageField(_("image"),
+                              upload_to='recipe_images/',
+                              **validations.horizontal_image_validator)
     link = models.URLField(_("link"))
 
     fields_to_translate = ['description']

@@ -128,7 +128,7 @@ class RecipeListAPIView(ListAPIView):
     serializer_class = RecipeSerializer
     pagination_class = None
 
-    
+
 @extend_schema(tags=["РЕЦЕПТЫ"])
 @extend_schema_view(
     get=extend_schema(
