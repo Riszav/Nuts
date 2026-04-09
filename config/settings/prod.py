@@ -1,6 +1,6 @@
 from decouple import config
 
-ALLOWED_HOSTS = [config("IP_ADDRESS")]
+ALLOWED_HOSTS = [config("IP_ADDRESS"), config("DOMAIN_NAME")]
 
 # Настройки базы данных для продакшена
 DATABASES = {
@@ -14,4 +14,4 @@ DATABASES = {
     }
 }
 
-CSRF_TRUSTED_ORIGINS = ["http://"+config('IP_ADDRESS'), "http://"+config('IP_ADDRESS')+":80"]
+CSRF_TRUSTED_ORIGINS = ["http://"+config('IP_ADDRESS'), "http://"+config('IP_ADDRESS')+":80", "https://"+config("DOMAIN_NAME")]
